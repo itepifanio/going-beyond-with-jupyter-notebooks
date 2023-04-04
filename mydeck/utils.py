@@ -7,7 +7,7 @@ __all__ = ['Hand']
 from typing import Optional, List, Iterator
 
 from fastcore.basics import patch
-from indo_alem_com_jupyter_notebook.core import Card
+from mydeck.core import Card
 
 # %% ../nbs/06_hand.ipynb 3
 class Hand:
