@@ -5,7 +5,7 @@ website:
       - contents:
         - 00a_modules_and_packages.ipynb
         - 00b_why_packaging.ipynb
-        - 00b_pypi.ipynb
+        - 00c_pypi.ipynb
         section: "Python packaging"
       - 01_install.ipynb
       - 02_literate_programming.ipynb
