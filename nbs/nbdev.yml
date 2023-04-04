@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "going-beyond-with-jupyter-notebooks"
+  site-url: "https://itepifanio.github.io/going-beyond-with-jupyter-notebooks"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/itepifanio/going-beyond-with-jupyter-notebooks"
