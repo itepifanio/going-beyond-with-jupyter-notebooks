@@ -1,0 +1,18 @@
+# Dependências
+
+A medida que um software cresce é comum que se instalem novas dependências 
+e que essas sejam constantemente atualizadas, para adquirir novas funcionalidades, 
+corrigir erros ou mesmo evitar problemas de segurança.
+
+Ao desenvolver um pacote é necessário que se atente as especificações das dependências 
+de forma que se evite o chamado "dependency hell", momento em que um projeto precisa 
+de duas dependências que não conseguem coexistir conjuntamente 
+(ex: dependência 1 exige Python 3.7 a dependência 2 exige Python 3.9).
+
+## Especificando Dependências
+
+- ~= para especificar releases compativeis
+- == para fixar versão específica
+- != para excluir versão
+- <=, >= para especificar de maneira inclusiva uma faixa de versões
+- <, > para especificar de maneira exclusiva uma faixa de versões

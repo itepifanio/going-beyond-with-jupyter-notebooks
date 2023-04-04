@@ -1,0 +1,26 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - contents:
+        - 00a_modules_and_packages.ipynb
+        - why_packaging.qmd
+        - 00b_pypi.ipynb
+        section: "Pacotes Python"
+      - 01_install.ipynb
+      - 02_literate_programming.ipynb
+      - 03_good_practices.ipynb
+      - 04_creating_project.ipynb
+      - contents:
+        - 05_deck.ipynb
+        - 06_hand.ipynb
+        section: "Modulos"
+      - dependencies.qmd
+      - 07_qa.ipynb
+      - 08_advanced_testing.ipynb
+      - 09_publishing.ipynb
+      - 10_ci_cd.ipynb
+      - 11_advanced_python_distributions.ipynb
+      - 12_ui_for_jupyter_notebooks.ipynb
+      - 13_quarto_blogging.ipynb
+      - 14_chat_gpt.ipynb

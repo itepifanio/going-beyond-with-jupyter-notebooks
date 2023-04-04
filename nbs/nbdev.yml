@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "indo-alem-com-jupyter-notebook"
+  site-url: "https://itepifanio.github.io/indo-alem-com-jupyter-notebook"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/itepifanio/indo-alem-com-jupyter-notebook"
