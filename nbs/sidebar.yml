@@ -7,8 +7,8 @@ website:
         - 00b_why_packaging.ipynb
         - 00c_pypi.ipynb
         section: "Python packaging"
-      - 01_install.ipynb
-      - 02_literate_programming.ipynb
+      - 01_literate_programming.ipynb
+      - 02_nbdev_introduction.ipynb
       - 03_good_practices.ipynb
       - 04_creating_project.ipynb
       - contents:
