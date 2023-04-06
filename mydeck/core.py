@@ -3,20 +3,19 @@
 # %% auto 0
 __all__ = ['Card', 'FrenchDeck']
 
-# %% ../nbs/05_deck.ipynb 4
+# %% ../nbs/05_deck.ipynb 2
 import random
 import collections
 from typing import List, Iterator
 
 from fastcore.basics import patch
 
-# %% ../nbs/05_deck.ipynb 6
+# %% ../nbs/05_deck.ipynb 5
 Card = collections.namedtuple("Card", ["rank", "suit"])
 
-# %% ../nbs/05_deck.ipynb 10
+# %% ../nbs/05_deck.ipynb 9
+# | code-fold: true
 class FrenchDeck:
-    """Baralho com 52 cartas"""
-
     ranks = [n for n in range(1, 14)]
     suits = "spades diamonds clubs hearts".split()
 
@@ -35,7 +34,7 @@ class FrenchDeck:
     def __repr__(self):
         return "\n".join(str(card) for card in self.cards)
 
-# %% ../nbs/05_deck.ipynb 19
+# %% ../nbs/05_deck.ipynb 18
 @patch
 def shuffle(self: FrenchDeck) -> FrenchDeck:
     """Shuffles all cards available"""
@@ -43,7 +42,7 @@ def shuffle(self: FrenchDeck) -> FrenchDeck:
 
     return self
 
-# %% ../nbs/05_deck.ipynb 20
+# %% ../nbs/05_deck.ipynb 19
 @patch
 def draw(self: FrenchDeck) -> Card:
     """Removes a card from the top of the deck"""
@@ -51,9 +50,10 @@ def draw(self: FrenchDeck) -> Card:
 
     return card
 
-# %% ../nbs/05_deck.ipynb 23
+# %% ../nbs/05_deck.ipynb 22
 @patch
-def draw_n(self: FrenchDeck, n_cards: int) -> List[Card]:  # number of cards to draw
+# number of cards to draw
+def draw_n(self: FrenchDeck, n_cards: int) -> List[Card]:
     """Removes `n` cards from the top of the deck"""
     cards = []
 

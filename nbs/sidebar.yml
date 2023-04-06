@@ -10,7 +10,6 @@ website:
       - 01_literate_programming.ipynb
       - 02_nbdev_introduction.ipynb
       - 03_good_practices.ipynb
-      - 04_creating_project.ipynb
       - contents:
         - 05_deck.ipynb
         - 06_hand.ipynb
