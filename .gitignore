@@ -1,5 +1,8 @@
-nbs/_docs
+_docs
 .ipynb_checkpoints
 pycon
 _proc
 __pycache__
+*.egg-info
+dist
+build
