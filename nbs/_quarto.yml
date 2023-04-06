@@ -11,10 +11,18 @@ website:
   twitter-card: false
   open-graph: false
   repo-actions: [issue]
-  navbar:
-    background: primary
-    search: false
   sidebar:
     style: floating
+  navbar:
+    background: primary
+    search: true
+    collapse-below: lg
+    right:
+      - icon: github
+        href: "https://github.com/itepifanio/going-beyond-with-jupyter-notebooks"
+      - icon: twitter
+        href: https://twitter.com/itepifanio
+      - icon: linkedin
+        href: https://www.linkedin.com/in/italoepifanio/
 
 metadata-files: [nbdev.yml, sidebar.yml]
