@@ -21,6 +21,10 @@ jobs:
       run: |
         pip install -e .[dev]
 
+    - name: Check nbs are clean
+      run: ./scripts/check_nbs_clean.sh
+      shell: bash
+
     - name: Run flake8
       run: nbqa flake8 nbs/*.ipynb
 
