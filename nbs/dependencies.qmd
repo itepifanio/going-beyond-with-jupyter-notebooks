@@ -7,7 +7,7 @@ format: revealjs
 ### Dependency Hell
 
 - When a software grows more libs tend to be added
-- Packages are awesome it can add features, avoid/fix errors and provide more security to a software
+- Packages are awesome they can add features, avoid/fix errors and provide more security to a software
 - But keeping packages updates can be tricky
 - Ex. Dependency 1 expects Python 3.7 usage and Dependency 2 expects Python 3.9
 
@@ -18,3 +18,21 @@ format: revealjs
 - != to exclude a version
 - <=, >= to inclusively specify a range of versions
 - <, > to specify a range of versions
+
+## Releasing
+
+- Semantic versioning is a set of rules that helps avoiding dependency hell
+- It MUST declara a public API and it SHOULD be comprehensive 
+- The version number MUST use the X.Y.Z format where X, Y, Z are 
+non-negative integers and each element SHOULD increase numerically
+- MAJOR.MINOR.PATCH
+
+## Keep a changelog {.smaller}
+
+- Semantic versioning is very didatic but it's not human readable
+- Changelog keeps a chronologicall order list of notable changes of 
+each version of a project
+- It improve the transparency
+- Help to keep developers accountable
+- Help stakeholders to understand the project direction
+- Keeps a list of the bugs
