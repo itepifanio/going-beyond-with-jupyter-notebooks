@@ -1,0 +1,9 @@
+# E402 -> Module level import not at top of file
+# Cause : We might use some imports for testing inside the nbs.
+# F401 -> Module imported but unused
+# F403 -> 'from module import *' used; unable to detect undefined names
+# F405 -> Name may be undefined, or defined from star imports: module
+# E265 -> comment block should start with '# '
+# Cause : Avoid error with nbdev commands: #| 
+[flake8]
+ignore = E402,F401,F403,F405,E265
