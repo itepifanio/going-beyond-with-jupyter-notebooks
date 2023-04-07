@@ -1,8 +1,8 @@
 name: Publish package to TestPypi
 
 on:
-  push:
-    branches: ["main"]
+  release:
+    types: [published]
 jobs:
   publish:
     runs-on: ubuntu-latest
