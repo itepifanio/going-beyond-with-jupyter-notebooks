@@ -11,7 +11,7 @@ from fastcore.basics import patch
 from mydeck.core import Card
 
 # %% ../nbs/06_hand.ipynb 3
-# | code-fold: true
+#| code-fold: true
 class Hand:
     def __init__(
         self, max_cards: Optional[int] = None  # Max amount of cards it can be hold

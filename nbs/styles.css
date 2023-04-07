@@ -35,3 +35,19 @@ div.description {
   font-size: 135%;
   opacity: 70%;
 }
+
+a[href="https://palaimon.io/"] > .menu-text {
+  background-image: url("images/favicon.png");
+  display: inline-block;
+  font-family: bootstrap-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -.125em;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-size: contain;
+  border-radius: 2px;
+}

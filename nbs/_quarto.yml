@@ -24,5 +24,6 @@ website:
         href: https://twitter.com/itepifanio
       - icon: linkedin
         href: https://www.linkedin.com/in/italoepifanio/
+      - href: https://palaimon.io/       
 
 metadata-files: [nbdev.yml, sidebar.yml]
