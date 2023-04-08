@@ -994,7 +994,7 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Create a new notebook called experiments</li>
+<li>Create a new notebook called <code>card_utils.ipynb</code></li>
 <li>Add a title and description to the notebook</li>
 <li>Copy the <code>Card</code> class definition</li>
 <li>Create a function <code>card_name</code> that returns <code>1 of Hearts</code></li>
@@ -1023,9 +1023,400 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
+<ul>
+<li>Add a code cell at the top of the <code>card_utils.ipynb</code> nb with <code>#| default_exp card_utils</code></li>
+<li>Next, add a code cell with <code>from nbdev import nbdev_export</code></li>
+<li>At the end of <code>card_utils.ipynb</code> add <code>nbdev_export()</code></li>
+<li>Execute the nb and check the <code>mydeck</code> folder</li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="dependencies" class="title-slide slide level1 center">
+<h1>Dependencies</h1>
+<p>Avoid dependency hell for others</p>
+</section>
+<section id="dependency-hell" class="slide level2">
+<h2>Dependency Hell</h2>
+<ul>
+<li>When a software grows more libs tend to be added</li>
+<li>Packages are awesome they can add features, avoid/fix errors and provide more security to a software</li>
+<li>But keeping packages updates can be tricky</li>
+<li>Ex. Dependency 1 expects Python 3.7 usage and Dependency 2 expects Python 3.9</li>
+</ul>
+</section>
+<section id="specify-your-dependencies" class="slide level2">
+<h2>Specify your dependencies</h2>
+<ul>
+<li>~= to specify releases</li>
+<li>== to fix a version</li>
+<li>!= to exclude a version</li>
+<li>&lt;=, &gt;= to inclusively specify a range of versions</li>
+<li>&lt;, &gt; to specify a range of versions</li>
+</ul>
+</section>
+<section id="releasing" class="slide level2">
+<h2>Releasing</h2>
+<ul>
+<li>Semantic versioning is a set of rules that helps avoiding dependency hell</li>
+<li>It MUST declara a public API and it SHOULD be comprehensive</li>
+<li>The version number MUST use the X.Y.Z format where X, Y, Z are non-negative integers and each element SHOULD increase numerically</li>
+<li>MAJOR.MINOR.PATCH</li>
+</ul>
+</section>
+<section id="keep-a-changelog" class="slide level2 smaller">
+<h2>Keep a changelog</h2>
+<ul>
+<li>Semantic versioning is very didatic but it’s not human readable</li>
+<li>Changelog keeps a chronologicall order list of notable changes of each version of a project</li>
+<li>It improve the transparency</li>
+<li>Help to keep developers accountable</li>
+<li>Help stakeholders to understand the project direction</li>
+<li>Keeps a list of the bugs</li>
+</ul>
+</section></section>
+<section>
+<section id="quality-assurance" class="title-slide slide level1 center">
+<h1>Quality Assurance</h1>
+<p>Improve your code using automatic tools</p>
+</section>
+<section id="nbqa" class="slide level2">
+<h2>NbQA</h2>
+<p>There are several tools that analises code and:</p>
+<ul>
+<li>Avoid errors and code smells</li>
+<li>Define a code style</li>
+<li>Improve readability</li>
+<li>Measure code quality</li>
+</ul>
+</section>
+<section id="nbqa-1" class="slide level2">
+<h2>NbQA</h2>
+<p>Popular tools that analise code:</p>
+<ul>
+<li>Autopep8</li>
+<li>Black</li>
+<li>Flake8</li>
+<li>MyPy</li>
+<li>Isort</li>
+</ul>
+<p>All of them (and some others) can be executed using NbQA</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">nbqa</span> <span class="op">&lt;</span>tool-name<span class="op">&gt;</span> <span class="op">&lt;</span>tool-params<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="mypy" class="slide level2 smaller">
+<h2>MyPy</h2>
+<blockquote>
+<p>Static type checker. It validates your code typing without executing it</p>
+</blockquote>
+<p>Previous to Python 3.5 (we didn’t have typing), it was common the docstring usage to define types:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> natural_sum(x, y):</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="co">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">    Args:</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co">        x (int): first parameter of the sum</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co">        y (int): second parameter of the sum</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co">    Returns:</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co">        Optional[int]: Sum of x and y if both bigger than zero</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co">    """</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb16-10"><a href="#cb16-10"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="mypy-1" class="slide level2 smaller">
+<h2>MyPy</h2>
+<p>The need of tools to validate data typing made Python add the typing system to its core.</p>
+<p>Run the following snippet on your terminal:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ot">! </span><span class="ex">nbqa</span> mypy <span class="pp">*</span>.ipynb <span class="at">--ignore-missing-imports</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The type system was developed to help other tools like MyPy to check types statically but libs like pydantic started to validate typing in runtime as well for some use cases</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Check MyPy usage creating a adding function:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> add(a: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and testing the function using:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>add(<span class="st">'1'</span>, <span class="st">'2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="flake8" class="slide level2 smaller">
+<h2>Flake8</h2>
+<blockquote>
+<p>Is a style guide enforcement</p>
+</blockquote>
+<p>It saves time when team start discussing empty spaces and small code style details on pull requests</p>
+<p>Run the following snippet in your terminal:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ot">! </span><span class="ex">nbqa</span> flake8 <span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Test flake8 usage by adding a import that it’s not used like <code>import matplotlib</code></li>
+<li>Check the .flake8 file (it is used by autopep8* as well)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="autopep8" class="slide level2">
+<h2>Autopep8</h2>
+<blockquote>
+<p>Code format enforcer according to <a href="https://peps.python.org/pep-0008/">PEP 8</a></p>
+</blockquote>
+<p>Is very useful to clean empty space and format notebooks with a well known code style</p>
+<p>Run the following snippet in your terminal:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ot">! </span><span class="ex">nbqa</span> autopep8 nbs/<span class="pp">*</span>.ipynb <span class="at">--in-place</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="black" class="slide level2">
+<h2>Black</h2>
+<blockquote>
+<p>Another code format enforcer but more flexible</p>
+</blockquote>
+<p>Works similar to autopep8 but not restrinted to PEP 8</p>
+<p>Run the following snippet in your terminal:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ot">! </span><span class="ex">nbqa</span> black nbs/<span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section id="advanced-testing" class="title-slide slide level1 center">
+<h1>Advanced testing</h1>
+<p>Test isolation with i(pytest). Let’s explore the advanced testing nb</p>
+</section>
+
+<section>
+<section id="publishing" class="title-slide slide level1 center">
+<h1>Publishing</h1>
+<p>Nbdev allows publish package by using its CLI</p>
+</section>
+<section id="conda-and-pypi" class="slide level2">
+<h2>Conda and PyPI</h2>
+<ul>
+<li>It can publish on both: <code>nbdev_pypi</code>, <code>nbdev_conda</code>, <code>nbdev_release_both</code></li>
+<li><a href="https://github.com/fastai/nbdev/pull/1320">Less documented</a> but it also allows Test PyPI usage (<code>nbdev_pypi --repository testpypi</code>)</li>
+</ul>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>As we did before with the <code>minimal_package</code> let’s publish this package (<code>mydeck</code>) using <code>nbdev_pypi --repository testpypi</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="secret-keys" class="slide level2">
+<h2>Secret keys</h2>
+<p>Python package system uses the <a href="https://packaging.python.org/en/latest/specifications/pypirc/">.pypirc</a> to define the repository packages:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="dt">username</span><span class="op">=</span><span class="er">&lt;your-username&gt;</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="dt">password</span><span class="op">=</span><span class="er">&lt;your-password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="secret-keys-1" class="slide level2">
+<h2>Secret keys</h2>
+<p>Username and password usage are not encouraged, consider gerate a token for your package:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="custom-repositories" class="slide level2 smaller">
+<h2>Custom repositories</h2>
+<p>To add custom repositories (private or not) you can change the <code>~/.pypirc</code> and add the repository name to <code>[distutils]</code></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="dt">index-servers</span> <span class="op">=</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>    <span class="dt">pypi</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>    <span class="dt">testpypi</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>    <span class="dt">private-repository</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">[</span><span class="dt">pypi</span><span class="kw">]</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;TestPyPI</span> <span class="er">token&gt;</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a></span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="kw">[</span><span class="dt">private-repository</span><span class="kw">]</span></span>
+<span id="cb25-16"><a href="#cb25-16"></a><span class="dt">repository</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">URL&gt;</span></span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">username&gt;</span></span>
+<span id="cb25-18"><a href="#cb25-18"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="cicd" class="title-slide slide level1 center">
+<h1>CI/CD</h1>
+<p>Let’s run QA and publish our package using Github Actions</p>
+</section>
+<section id="continuous-integrationcontinuous-delivery" class="slide level2">
+<h2>Continuous Integration/Continuous Delivery</h2>
+<ul>
+<li>Well know concept in the DevOps area that became more acessible to developers recently</li>
+<li>Method to frequently deliver apps to customers</li>
+<li>It automates some stages of the app development</li>
+<li>Enforce security of the deliver</li>
+</ul>
+</section>
+<section id="continuous-integrationcontinuous-delivery-1" class="slide level2">
+<h2>Continuous Integration/Continuous Delivery</h2>
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart LR
+  subgraph CI
+    A["Build"] --&gt; B["Test"] --&gt; C["Merge"]
+  end
+  
+  subgraph CD
+      D["Automatically release"] --&gt; E["Automatically deploy"]
+  end
+  
+  C --&gt; D
+</pre>
+<div id="mermaid-tooltip-5" class="mermaidTooltip">
 
 </div>
+<p></p>
 </div>
+</div>
+</div>
+</section>
+<section id="tools" class="slide level2">
+<h2>Tools</h2>
+<ul>
+<li><a href="https://github.com/features/actions">Github Actions</a></li>
+<li><a href="https://about.gitlab.com/">Gitlab CI/CD</a></li>
+<li><a href="https://www.jenkins.io/">Jenkins</a></li>
+<li><a href="https://circleci.com/">Circle CI</a></li>
+</ul>
+<p>And many others</p>
+</section>
+<section id="github-actions" class="slide level2">
+<h2>Github Actions</h2>
+<ul>
+<li>Easy to use</li>
+<li>Free until 2000 minutes/month</li>
+<li>Most tools has some integration with it</li>
+</ul>
+</section>
+<section id="github-actions-core-concepts" class="slide level2 smaller">
+<h2>Github actions core concepts</h2>
+<ul>
+<li><em>Events</em>: It’s a specific activity in your Github repository that triggers an action. For example, the opening of a PR, a commit been sent, etc</li>
+<li><em>Jobs</em>: It’s a sequence of steps that will be executed by a shell script or action. Jobs can be executed in parallel or sequentially</li>
+<li><em>Action</em>: custom application that uses the Github Action platform, it usually automates a repetitive task like the configuration of an environment or managing a complex dependency, even service authentication (like cloud)</li>
+<li><em>Runner</em>: Server that executes workflows. Every runner executes a job per time</li>
+</ul>
+</section>
+<section id="github-secrets-test-pypi-token" class="slide level2 smaller">
+<h2>Github secrets &amp; Test Pypi token</h2>
+<ul>
+<li>Let’s create a token for our mydeck repository</li>
+</ul>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>At Test PyPI webpage access <code>Account Settings &gt;&gt; Api Tokens &gt;&gt; Add Api Token</code></p>
+</div>
+</div>
+</div>
+<ul>
+<li>In your Github repository go to: <code>Settings &gt;&gt; Actions (at security tab) &gt;&gt; New repository secret</code> and add the token with the name <code>TEST_PYPI_API_TOKEN</code></li>
+</ul>
+</section>
+<section id="workflows" class="slide level2">
+<h2>Workflows</h2>
+<p>(Interactive explation of files from <code>.github/worflows/*.yaml</code>)</p>
+</section>
+<section id="publising-using-ci" class="slide level2">
+<h2>Publising using CI</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Upgrade the version at <code>settings.ini</code></li>
+<li>Update your changelog</li>
+<li>Commit and push your changes to Github</li>
+<li>Check if tests and lint are passing</li>
+<li>Create a new release at github following the semantic versioning to use our CD of the package</li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="python-packaging-history" class="title-slide slide level1 center">
+<h1>Python Packaging history</h1>
+<p>Let’s look at the past to discuss the future of Python packaging</p>
+</section>
+<section id="history" class="slide level2">
+<h2>History</h2>
+<div>
+<ul>
+<li class="fragment">Python 1 (1998-2000) didn’t have a package manager</li>
+<li class="fragment">Distutils was added to Python 1.6 using setup.py</li>
+<li class="fragment">In 2003 setuptools was introduced as an improvement of distutils</li>
+<li class="fragment">In 2004 easy_install was developed to be used alongside setuptools</li>
+<li class="fragment">In 2008 the PyPA (Python Packaging Authority) was founded</li>
+</ul>
+</div>
+</section>
+<section id="history-1" class="slide level2">
+<h2>History</h2>
+<div>
+<ul>
+<li class="fragment">In 2011 <code>pip</code> was became the default package manager</li>
+<li class="fragment">In 2013 the <code>wheel</code> package was introduced</li>
+<li class="fragment">In 2017 the <code>flit</code> package was developed, introducing <code>pyproject.toml</code></li>
+<li class="fragment">In 2020 the PEP 621 made <code>pyproject.toml</code> the standard way to develop packages</li>
+</ul>
 </div>
 
 <img src="images/palaimon_logo.svg" class="slide-logo r-stretch"><div class="footer footer-default">
