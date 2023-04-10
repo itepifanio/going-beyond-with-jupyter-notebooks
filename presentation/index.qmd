@@ -97,7 +97,7 @@ Packages can be understood as a collection of modules. Check the following struc
 
 ```
 somefolder/
-    minimal_package/
+    {username}_package/
         __init__.py
         module1.py
         subpackage/
@@ -107,9 +107,9 @@ somefolder/
 ::: {.callout-note}
 - Create this folder structure on your machine
 - Open your terminal
-- Import module1 `from minimal_package import module1`
-- Import module2 `from minimal_package.subpackage import module2`
-- Access a different folder (`cd ..`) and import the minimal_package
+- Import module1 `from {username}_package import module1`
+- Import module2 `from {username}_package.subpackage import module2`
+- Access a different folder (`cd ..`) and import the {username}_package
 - sys.path and `pip install -e .[dev]`
 :::
 
@@ -164,15 +164,15 @@ To reutilize different heroes in different timeline it would be required code du
 ::: {.column width="50%"}
 - Harder to maintain
 - Dependency management can be difficult
-- Security of third parts packages
-- Packages sometimes has more features than it's required
+- Security of third-party packages
+- Packages sometimes have more features than it's required
 :::
 
 :::
 
 ## How to publish? {.smaller}
 
-We have previously installed our minimal package locally but how we can 
+We have previously installed our {username} package locally but how we can 
 publish on pip and use it to download?
 
 ```{mermaid}
@@ -193,29 +193,39 @@ Python Package Index
 - [Test PyPI](https://packaging.python.org/en/latest/guides/using-testpypi/) a separated index for testing
 
 :::{.callout-note}
-Create your account at https://test.pypi.org, let's use it to publish our minimal package
+Create your account at https://test.pypi.org, let's use it to publish our {username} package
 :::
 
-## Publishing minimal package {.smaller}
+## Publishing {username} package {.smaller}
 
-- Go to the root of the "minimal package"
+- Go to the root (`somefolder`) of the "{username} package"
 - Create a setup.py file with the following content:
 
 ```python
 from setuptools import setup
 
 setup(
-    name='minimal_package',
+    name='{username}_package',
     version='0.0.1',
-    packages=['minimal_package']
+    packages=['{username}_package']
 )
 ```
 
+**Legacy way**
+
 - Run `python setup.py sdist` and `python setup.py bdist_wheel`
 - Check the `dist` folder
+
+## Publishing {username} package {.smaller}
+
+**Current**
+
 - Run `python -m build` (you may need to download `pip install build`)
 - Check the `dist` folder
+- Check if twine is available by running `twine` in your terminal, otherwise run `pip install twine`
+- (Make sure your Test PyPI email is verified)
 - Run `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
+
 
 ## Other packaging repositories
 
@@ -272,7 +282,7 @@ flowchart
 
 ## Jupyter notebook introduction {.smaller}
 
-- Using the virtualenv created at minimal_package, install jupyter notebooks: `pip install notebook`
+- Using the virtualenv created at {username}_package, install jupyter notebooks: `pip install notebook`
 - Run `jupyter-notebook`
 - Get familiar with the UI
 
@@ -291,7 +301,7 @@ Using Jupyter notebooks to publish Python packaging
 
 ## Install {.smaller}
 
-- Let's ignore our minimal project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook
+- Let's ignore our {username}_package project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook
 - Create a new virtualenv `python -m venv tutorial`
 - Activate your new virtualenv `source ./tutorial/bin/activate`
 - Install the package running `pip install -e .[dev]`
@@ -656,7 +666,7 @@ Nbdev allows publish package by using its CLI
 - [Less documented](https://github.com/fastai/nbdev/pull/1320) but it also allows Test PyPI usage (`nbdev_pypi --repository testpypi`)
 
 :::{.callout-note}
-As we did before with the `minimal_package` let's publish this package (`mydeck`) using `nbdev_pypi --repository testpypi`
+As we did before with the `{username}_package` let's publish this package (`mydeck`) using `nbdev_pypi --repository testpypi`
 :::
 
 ## Secret keys

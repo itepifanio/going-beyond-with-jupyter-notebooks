@@ -484,7 +484,7 @@
 </blockquote>
 <p>Packages can be understood as a collection of modules. Check the following structure.</p>
 <pre><code>somefolder/
-    minimal_package/
+    {username}_package/
         __init__.py
         module1.py
         subpackage/
@@ -501,9 +501,9 @@
 <ul>
 <li>Create this folder structure on your machine</li>
 <li>Open your terminal</li>
-<li>Import module1 <code>from minimal_package import module1</code></li>
-<li>Import module2 <code>from minimal_package.subpackage import module2</code></li>
-<li>Access a different folder (<code>cd ..</code>) and import the minimal_package</li>
+<li>Import module1 <code>from {username}_package import module1</code></li>
+<li>Import module2 <code>from {username}_package.subpackage import module2</code></li>
+<li>Access a different folder (<code>cd ..</code>) and import the {username}_package</li>
 <li>sys.path and <code>pip install -e .[dev]</code></li>
 </ul>
 </div>
@@ -589,8 +589,8 @@
 <ul>
 <li>Harder to maintain</li>
 <li>Dependency management can be difficult</li>
-<li>Security of third parts packages</li>
-<li>Packages sometimes has more features than it’s required</li>
+<li>Security of third-party packages</li>
+<li>Packages sometimes have more features than it’s required</li>
 </ul>
 </div>
 </div>
@@ -644,21 +644,30 @@
 <section id="publishing-minimal-package" class="slide level2 smaller">
 <h2>Publishing minimal package</h2>
 <ul>
-<li>Go to the root of the “minimal package”</li>
+<li>Go to the root (<code>somefolder</code>) of the “{username} package”</li>
 <li>Create a setup.py file with the following content:</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> setuptools <span class="im">import</span> setup</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a>setup(</span>
-<span id="cb6-4"><a href="#cb6-4"></a>    name<span class="op">=</span><span class="st">'minimal_package'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    name<span class="op">=</span><span class="st">'</span><span class="sc">{username}</span><span class="st">_package'</span>,</span>
 <span id="cb6-5"><a href="#cb6-5"></a>    version<span class="op">=</span><span class="st">'0.0.1'</span>,</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    packages<span class="op">=</span>[<span class="st">'minimal_package'</span>]</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    packages<span class="op">=</span>[<span class="st">'</span><span class="sc">{username}</span><span class="st">_package'</span>]</span>
 <span id="cb6-7"><a href="#cb6-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Legacy way</strong></p>
 <ul>
 <li>Run <code>python setup.py sdist</code> and <code>python setup.py bdist_wheel</code></li>
 <li>Check the <code>dist</code> folder</li>
+</ul>
+</section>
+<section id="publishing-username-package" class="slide level2 smaller">
+<h2>Publishing {username} package</h2>
+<p><strong>Current</strong></p>
+<ul>
 <li>Run <code>python -m build</code> (you may need to download <code>pip install build</code>)</li>
 <li>Check the <code>dist</code> folder</li>
+<li>Check if twine is available by running <code>twine</code> in your terminal, otherwise run <code>pip install twine</code></li>
+<li>(Make sure your Test PyPI email is verified)</li>
 <li>Run <code>twine upload --repository-url https://test.pypi.org/legacy/ dist/*</code></li>
 </ul>
 </section>
@@ -893,7 +902,7 @@
 <section id="doc-parameters-1" class="slide level2 smaller">
 <h2>Doc parameters</h2>
 <div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <hr>
 <h3 id="add_np">add_np</h3>
 <blockquote>
@@ -937,7 +946,7 @@
 <span id="cb11-5"><a href="#cb11-5"></a>    <span class="co">"The sum of two numbers."</span></span>
 <span id="cb11-6"><a href="#cb11-6"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <hr>
 <h3 id="add">add</h3>
 <blockquote>
@@ -1418,11 +1427,113 @@
 <li class="fragment">In 2020 the PEP 621 made <code>pyproject.toml</code> the standard way to develop packages</li>
 </ul>
 </div>
+</section></section>
+<section>
+<section id="quarto-and-styling" class="title-slide slide level1 center">
+<h1>Quarto and Styling</h1>
+<p><a href="quarto.org/">Quarto</a> is an open source tool that allows creating content dinamically using Python, R, Julia and Observable. It was introduced to Nbdev recently</p>
+</section>
+<section id="executing" class="slide level2">
+<h2>Executing</h2>
+<p>Try to execute <code>quarto preview nbs/00_deck.ipynb</code> in the terminal</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Quarto is already installed on our setup thanks to <code>nbdev_install_quarto</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="doc-preview" class="slide level2">
+<h2>Doc preview</h2>
+<p>Change ports when rendering nbdev docs can be annoying, change <code>_quarto.yml</code> to fix a port and avoid opening new tabs.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="at">  </span><span class="fu">preview</span><span class="kw">:</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="at">    </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3000</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="at">    </span><span class="fu">browser</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="doc-navigation" class="slide level2">
+<h2>Doc navigation</h2>
+<p>Quarto allows easy customization of the navbar</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="at">    </span><span class="fu">background</span><span class="kw">:</span><span class="at"> primary</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="at">      </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="at">      </span><span class="fu">collapse-below</span><span class="kw">:</span><span class="at"> lg</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="at">      </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"My page"</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> gettings_started.ipynb</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="at">      </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/user/project"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="google-analytics" class="slide level2">
+<h2>Google analytics</h2>
+<p>Activate analytics tracking but remember asking for cookie consent if your country legislation requires it</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> </span><span class="st">"UA-XXXXXXXX"</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="dark-mode" class="slide level2">
+<h2>Dark mode</h2>
+<p>You can define the quarto theme to (de)activate dark mode</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> flatly</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> darkly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="page-navigation" class="slide level2">
+<h2>Page navigation</h2>
+<p>Your project may require continuous page navigation</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="at">  </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="reader-mode" class="slide level2">
+<h2>Reader mode</h2>
+<p>Enable reader mode</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="at">  </span><span class="fu">reader-mode</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="playgroud" class="title-slide slide level1 center">
+<h1>Playgroud</h1>
+<p>We already published our package and know more about nbdev powers, let’s have some fun with nbs</p>
+</section>
+<section id="ipywidgets" class="slide level2">
+<h2>Ipywidgets</h2>
+<p>Let’s run the UI for jupyter notebooks nb</p>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Run voila over the nb</p>
+</div>
+</div>
+</div>
+</section>
+<section id="chat-gpt" class="slide level2">
+<h2>Chat GPT</h2>
+<p>Let’s use Chat GPT in our nbs by running the chat gpt nb</p>
+</section></section>
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
 
 <img src="images/palaimon_logo.svg" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Going beyond with Jupyter notebooks</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
