@@ -2,12 +2,29 @@
 title: "Going beyond with Jupyter notebooks"
 subtitle: "Welcome! This tutorial will present how to use Jupyter notebooks to publish python packages and more"
 format:
-  revealjs: 
+  revealjs:
     slide-number: true
     logo: images/palaimon_logo.svg
     css: styles.css
     footer: Going beyond with Jupyter notebooks
 ---
+
+## Hello there {.smaller}
+
+::: {.fragment}
+- Brazilian
+![](images/natalrn.jpg){.absolute top=0 right=0 width=350 height=238}
+:::
+::: {.fragment}
+- Computer scientist*
+- RnD Python Developer
+- Open source maintainer
+:::
+
+::: {.fragment}
+- Python community contributor (Grupy RN)
+![](images/grupyrn.png){.absolute top=250 right=0}
+:::
 
 ## Hello there {.smaller}
 
@@ -110,7 +127,7 @@ somefolder/
 - Import module1 `from {username}_package import module1`
 - Import module2 `from {username}_package.subpackage import module2`
 - Access a different folder (`cd ..`) and import the {username}_package
-- sys.path and `pip install -e .[dev]`
+- `import sys; sys.path.append('somefolder'); import {username_package}`
 :::
 
 ## Python package search

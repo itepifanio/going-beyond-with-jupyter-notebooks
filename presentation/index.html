@@ -400,6 +400,26 @@
 </section>
 <section id="hello-there" class="slide level2 smaller">
 <h2>Hello there</h2>
+<div class="fragment">
+<ul>
+<li>Brazilian <img data-src="images/natalrn.jpg" class="absolute" style="top: 0px; right: 0px; width: 350px; height: 238px; "></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Computer scientist*</li>
+<li>RnD Python Developer</li>
+<li>Open source maintainer</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Python community contributor (Grupy RN) <img data-src="images/grupyrn.png" class="absolute" style="top: 250px; right: 0px; "></li>
+</ul>
+</div>
+</section>
+<section id="hello-there-1" class="slide level2 smaller">
+<h2>Hello there</h2>
 <p>This tutorial will:</p>
 <ul>
 <li>Introduce the main concepts to publish a package and why to do it</li>
@@ -411,7 +431,7 @@
 <li>Develop a French Deck lib and mini game</li>
 </ul>
 </section>
-<section id="hello-there-1" class="slide level2 smaller">
+<section id="hello-there-2" class="slide level2 smaller">
 <h2>Hello there</h2>
 <ul>
 <li>Display quality assurance tools</li>
@@ -504,7 +524,7 @@
 <li>Import module1 <code>from {username}_package import module1</code></li>
 <li>Import module2 <code>from {username}_package.subpackage import module2</code></li>
 <li>Access a different folder (<code>cd ..</code>) and import the {username}_package</li>
-<li>sys.path and <code>pip install -e .[dev]</code></li>
+<li><code>import sys; sys.path.append('somefolder'); import {username_package}</code></li>
 </ul>
 </div>
 </div>
@@ -597,7 +617,7 @@
 </section>
 <section id="how-to-publish" class="slide level2 smaller">
 <h2>How to publish?</h2>
-<p>We have previously installed our minimal package locally but how we can publish on pip and use it to download?</p>
+<p>We have previously installed our {username} package locally but how we can publish on pip and use it to download?</p>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
@@ -636,13 +656,13 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Create your account at https://test.pypi.org, let’s use it to publish our minimal package</p>
+<p>Create your account at https://test.pypi.org, let’s use it to publish our {username} package</p>
 </div>
 </div>
 </div>
 </section>
-<section id="publishing-minimal-package" class="slide level2 smaller">
-<h2>Publishing minimal package</h2>
+<section id="publishing-username-package" class="slide level2 smaller">
+<h2>Publishing {username} package</h2>
 <ul>
 <li>Go to the root (<code>somefolder</code>) of the “{username} package”</li>
 <li>Create a setup.py file with the following content:</li>
@@ -660,7 +680,7 @@
 <li>Check the <code>dist</code> folder</li>
 </ul>
 </section>
-<section id="publishing-username-package" class="slide level2 smaller">
+<section id="publishing-username-package-1" class="slide level2 smaller">
 <h2>Publishing {username} package</h2>
 <p><strong>Current</strong></p>
 <ul>
@@ -746,7 +766,7 @@
 <section id="jupyter-notebook-introduction" class="slide level2 smaller">
 <h2>Jupyter notebook introduction</h2>
 <ul>
-<li>Using the virtualenv created at minimal_package, install jupyter notebooks: <code>pip install notebook</code></li>
+<li>Using the virtualenv created at {username}_package, install jupyter notebooks: <code>pip install notebook</code></li>
 <li>Run <code>jupyter-notebook</code></li>
 <li>Get familiar with the UI</li>
 </ul>
@@ -776,7 +796,7 @@
 <section id="install" class="slide level2 smaller">
 <h2>Install</h2>
 <ul>
-<li>Let’s ignore our minimal project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook</li>
+<li>Let’s ignore our {username}_package project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook</li>
 <li>Create a new virtualenv <code>python -m venv tutorial</code></li>
 <li>Activate your new virtualenv <code>source ./tutorial/bin/activate</code></li>
 <li>Install the package running <code>pip install -e .[dev]</code></li>
@@ -902,81 +922,29 @@
 <section id="doc-parameters-1" class="slide level2 smaller">
 <h2>Doc parameters</h2>
 <div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="47">
-<hr>
-<h3 id="add_np">add_np</h3>
-<blockquote>
-<pre><code> add_np (a, b=0)</code></pre>
-</blockquote>
-<p>The sum of two numbers.</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a</td>
-<td>int</td>
-<td></td>
-<td>the 1st number to add</td>
-</tr>
-<tr class="even">
-<td>b</td>
-<td>int</td>
-<td>0</td>
-<td>the 2nd number to add (default: 0)</td>
-</tr>
-</tbody>
-</table>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
 </div>
 </div>
 </section>
 <section id="doc-parameters-2" class="slide level2 smaller">
 <h2>Doc parameters</h2>
 <p>And the nbdev approach called “docments”</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> add(</span>
-<span id="cb11-2"><a href="#cb11-2"></a>    a: <span class="bu">int</span>,  <span class="co"># the 1st number to add</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>    b<span class="op">=</span><span class="dv">0</span>,  <span class="co"># the 2nd number to add</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>):</span>
-<span id="cb11-5"><a href="#cb11-5"></a>    <span class="co">"The sum of two numbers."</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> add(</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    a: <span class="bu">int</span>,  <span class="co"># the 1st number to add</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>    b<span class="op">=</span><span class="dv">0</span>,  <span class="co"># the 2nd number to add</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>):</span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="co">"The sum of two numbers."</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="48">
-<hr>
-<h3 id="add">add</h3>
-<blockquote>
-<pre><code> add (a:int, b=0)</code></pre>
-</blockquote>
-<p>The sum of two numbers.</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a</td>
-<td>int</td>
-<td></td>
-<td>the 1st number to add</td>
-</tr>
-<tr class="even">
-<td>b</td>
-<td>int</td>
-<td>0</td>
-<td>the 2nd number to add</td>
-</tr>
-</tbody>
-</table>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
 </div>
 </div>
 </section>
@@ -986,13 +954,13 @@
 <li>Keyword assert can be used for testing</li>
 <li>Run <code>nbdev_test</code></li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">assert</span> add(<span class="dv">1</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="cf">assert</span> add(<span class="dv">1</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercice" class="slide level2 smaller">
 <h2>Exercice</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> collections</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>Card <span class="op">=</span> collections.namedtuple(<span class="st">"Card"</span>, [<span class="st">"rank"</span>, <span class="st">"suit"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> collections</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>Card <span class="op">=</span> collections.namedtuple(<span class="st">"Card"</span>, [<span class="st">"rank"</span>, <span class="st">"suit"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -1112,7 +1080,7 @@
 <li>Isort</li>
 </ul>
 <p>All of them (and some others) can be executed using NbQA</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">nbqa</span> <span class="op">&lt;</span>tool-name<span class="op">&gt;</span> <span class="op">&lt;</span>tool-params<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">nbqa</span> <span class="op">&lt;</span>tool-name<span class="op">&gt;</span> <span class="op">&lt;</span>tool-params<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mypy" class="slide level2 smaller">
 <h2>MyPy</h2>
@@ -1120,24 +1088,24 @@
 <p>Static type checker. It validates your code typing without executing it</p>
 </blockquote>
 <p>Previous to Python 3.5 (we didn’t have typing), it was common the docstring usage to define types:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> natural_sum(x, y):</span>
-<span id="cb16-2"><a href="#cb16-2"></a>    <span class="co">"""</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">    Args:</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co">        x (int): first parameter of the sum</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="co">        y (int): second parameter of the sum</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="co">    Returns:</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="co">        Optional[int]: Sum of x and y if both bigger than zero</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a><span class="co">    """</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb16-10"><a href="#cb16-10"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a></span>
-<span id="cb16-12"><a href="#cb16-12"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> natural_sum(x, y):</span>
+<span id="cb18-2"><a href="#cb18-2"></a>    <span class="co">"""</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">    Args:</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co">        x (int): first parameter of the sum</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="co">        y (int): second parameter of the sum</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co">    Returns:</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co">        Optional[int]: Sum of x and y if both bigger than zero</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="co">    """</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb18-10"><a href="#cb18-10"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mypy-1" class="slide level2 smaller">
 <h2>MyPy</h2>
 <p>The need of tools to validate data typing made Python add the typing system to its core.</p>
 <p>Run the following snippet on your terminal:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ot">! </span><span class="ex">nbqa</span> mypy <span class="pp">*</span>.ipynb <span class="at">--ignore-missing-imports</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ot">! </span><span class="ex">nbqa</span> mypy <span class="pp">*</span>.ipynb <span class="at">--ignore-missing-imports</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -1161,10 +1129,10 @@
 </div>
 <div class="callout-content">
 <p>Check MyPy usage creating a adding function:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> add(a: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> add(a: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and testing the function using:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>add(<span class="st">'1'</span>, <span class="st">'2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>add(<span class="st">'1'</span>, <span class="st">'2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1176,7 +1144,7 @@
 </blockquote>
 <p>It saves time when team start discussing empty spaces and small code style details on pull requests</p>
 <p>Run the following snippet in your terminal:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ot">! </span><span class="ex">nbqa</span> flake8 <span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ot">! </span><span class="ex">nbqa</span> flake8 <span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -1201,7 +1169,7 @@
 </blockquote>
 <p>Is very useful to clean empty space and format notebooks with a well known code style</p>
 <p>Run the following snippet in your terminal:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ot">! </span><span class="ex">nbqa</span> autopep8 nbs/<span class="pp">*</span>.ipynb <span class="at">--in-place</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="ot">! </span><span class="ex">nbqa</span> autopep8 nbs/<span class="pp">*</span>.ipynb <span class="at">--in-place</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="black" class="slide level2">
 <h2>Black</h2>
@@ -1210,7 +1178,7 @@
 </blockquote>
 <p>Works similar to autopep8 but not restrinted to PEP 8</p>
 <p>Run the following snippet in your terminal:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ot">! </span><span class="ex">nbqa</span> black nbs/<span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ot">! </span><span class="ex">nbqa</span> black nbs/<span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section id="advanced-testing" class="title-slide slide level1 center">
 <h1>Advanced testing</h1>
@@ -1237,7 +1205,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>As we did before with the <code>minimal_package</code> let’s publish this package (<code>mydeck</code>) using <code>nbdev_pypi --repository testpypi</code></p>
+<p>As we did before with the <code>{username}_package</code> let’s publish this package (<code>mydeck</code>) using <code>nbdev_pypi --repository testpypi</code></p>
 </div>
 </div>
 </div>
@@ -1245,46 +1213,46 @@
 <section id="secret-keys" class="slide level2">
 <h2>Secret keys</h2>
 <p>Python package system uses the <a href="https://packaging.python.org/en/latest/specifications/pypirc/">.pypirc</a> to define the repository packages:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="dt">username</span><span class="op">=</span><span class="er">&lt;your-username&gt;</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="dt">password</span><span class="op">=</span><span class="er">&lt;your-password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="dt">username</span><span class="op">=</span><span class="er">&lt;your-username&gt;</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="dt">password</span><span class="op">=</span><span class="er">&lt;your-password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="secret-keys-1" class="slide level2">
 <h2>Secret keys</h2>
 <p>Username and password usage are not encouraged, consider gerate a token for your package:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a></span>
-<span id="cb24-4"><a href="#cb24-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
-<span id="cb24-6"><a href="#cb24-6"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="custom-repositories" class="slide level2 smaller">
 <h2>Custom repositories</h2>
 <p>To add custom repositories (private or not) you can change the <code>~/.pypirc</code> and add the repository name to <code>[distutils]</code></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="dt">index-servers</span> <span class="op">=</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>    <span class="dt">pypi</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>    <span class="dt">testpypi</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>    <span class="dt">private-repository</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">[</span><span class="dt">pypi</span><span class="kw">]</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a></span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
-<span id="cb25-12"><a href="#cb25-12"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
-<span id="cb25-13"><a href="#cb25-13"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;TestPyPI</span> <span class="er">token&gt;</span></span>
-<span id="cb25-14"><a href="#cb25-14"></a></span>
-<span id="cb25-15"><a href="#cb25-15"></a><span class="kw">[</span><span class="dt">private-repository</span><span class="kw">]</span></span>
-<span id="cb25-16"><a href="#cb25-16"></a><span class="dt">repository</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">URL&gt;</span></span>
-<span id="cb25-17"><a href="#cb25-17"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">username&gt;</span></span>
-<span id="cb25-18"><a href="#cb25-18"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="dt">index-servers</span> <span class="op">=</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>    <span class="dt">pypi</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>    <span class="dt">testpypi</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>    <span class="dt">private-repository</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="kw">[</span><span class="dt">pypi</span><span class="kw">]</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
+<span id="cb27-13"><a href="#cb27-13"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;TestPyPI</span> <span class="er">token&gt;</span></span>
+<span id="cb27-14"><a href="#cb27-14"></a></span>
+<span id="cb27-15"><a href="#cb27-15"></a><span class="kw">[</span><span class="dt">private-repository</span><span class="kw">]</span></span>
+<span id="cb27-16"><a href="#cb27-16"></a><span class="dt">repository</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">URL&gt;</span></span>
+<span id="cb27-17"><a href="#cb27-17"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">username&gt;</span></span>
+<span id="cb27-18"><a href="#cb27-18"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="cicd" class="title-slide slide level1 center">
@@ -1453,53 +1421,53 @@
 <section id="doc-preview" class="slide level2">
 <h2>Doc preview</h2>
 <p>Change ports when rendering nbdev docs can be annoying, change <code>_quarto.yml</code> to fix a port and avoid opening new tabs.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="at">  </span><span class="fu">preview</span><span class="kw">:</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="at">    </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3000</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="at">    </span><span class="fu">browser</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="at">  </span><span class="fu">preview</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="at">    </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3000</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="at">    </span><span class="fu">browser</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="doc-navigation" class="slide level2">
 <h2>Doc navigation</h2>
 <p>Quarto allows easy customization of the navbar</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="at">    </span><span class="fu">background</span><span class="kw">:</span><span class="at"> primary</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="at">      </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="at">      </span><span class="fu">collapse-below</span><span class="kw">:</span><span class="at"> lg</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="at">      </span><span class="fu">left</span><span class="kw">:</span></span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"My page"</span></span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> gettings_started.ipynb</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a><span class="at">      </span><span class="fu">right</span><span class="kw">:</span></span>
-<span id="cb27-10"><a href="#cb27-10"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
-<span id="cb27-11"><a href="#cb27-11"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/user/project"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="at">    </span><span class="fu">background</span><span class="kw">:</span><span class="at"> primary</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="at">      </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="at">      </span><span class="fu">collapse-below</span><span class="kw">:</span><span class="at"> lg</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="at">      </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"My page"</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> gettings_started.ipynb</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="at">      </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/user/project"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="google-analytics" class="slide level2">
 <h2>Google analytics</h2>
 <p>Activate analytics tracking but remember asking for cookie consent if your country legislation requires it</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> </span><span class="st">"UA-XXXXXXXX"</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> </span><span class="st">"UA-XXXXXXXX"</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dark-mode" class="slide level2">
 <h2>Dark mode</h2>
 <p>You can define the quarto theme to (de)activate dark mode</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> flatly</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> darkly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> flatly</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> darkly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="page-navigation" class="slide level2">
 <h2>Page navigation</h2>
 <p>Your project may require continuous page navigation</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="at">  </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="at">  </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="reader-mode" class="slide level2">
 <h2>Reader mode</h2>
 <p>Enable reader mode</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="at">  </span><span class="fu">reader-mode</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="at">  </span><span class="fu">reader-mode</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="playgroud" class="title-slide slide level1 center">
