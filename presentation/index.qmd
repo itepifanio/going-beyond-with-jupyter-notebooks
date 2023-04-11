@@ -2,12 +2,29 @@
 title: "Going beyond with Jupyter notebooks"
 subtitle: "Welcome! This tutorial will present how to use Jupyter notebooks to publish python packages and more"
 format:
-  revealjs: 
+  revealjs:
     slide-number: true
     logo: images/palaimon_logo.svg
     css: styles.css
     footer: Going beyond with Jupyter notebooks
 ---
+
+## Hello there {.smaller}
+
+::: {.fragment}
+- Brazilian
+![](images/natalrn.jpg){.absolute top=0 right=0 width=350 height=238}
+:::
+::: {.fragment}
+- Computer scientist*
+- RnD Python Developer
+- Open source maintainer
+:::
+
+::: {.fragment}
+- Python community contributor (Grupy RN)
+![](images/grupyrn.png){.absolute top=250 right=0}
+:::
 
 ## Hello there {.smaller}
 
@@ -97,7 +114,7 @@ Packages can be understood as a collection of modules. Check the following struc
 
 ```
 somefolder/
-    minimal_package/
+    {username}_package/
         __init__.py
         module1.py
         subpackage/
@@ -107,10 +124,10 @@ somefolder/
 ::: {.callout-note}
 - Create this folder structure on your machine
 - Open your terminal
-- Import module1 `from minimal_package import module1`
-- Import module2 `from minimal_package.subpackage import module2`
-- Access a different folder (`cd ..`) and import the minimal_package
-- sys.path and `pip install -e .[dev]`
+- Import module1 `from {username}_package import module1`
+- Import module2 `from {username}_package.subpackage import module2`
+- Access a different folder (`cd ..`) and import the {username}_package
+- `import sys; sys.path.append('somefolder'); import {username_package}`
 :::
 
 ## Python package search
@@ -162,18 +179,16 @@ To reutilize different heroes in different timeline it would be required code du
 :::
 
 ::: {.column width="50%"}
-- Harder to maintain
 - Dependency management can be difficult
-- Security of third parts packages
-- Packages sometimes has more features than it's required
+- Security of third-party packages
+- Packages sometimes have more features than it's required
 :::
 
 :::
 
 ## How to publish? {.smaller}
 
-We have previously installed our minimal package locally but how we can 
-publish on pip and use it to download?
+How can we publish the package in PyPI and download it using?
 
 ```{mermaid}
 flowchart TD
@@ -193,29 +208,30 @@ Python Package Index
 - [Test PyPI](https://packaging.python.org/en/latest/guides/using-testpypi/) a separated index for testing
 
 :::{.callout-note}
-Create your account at https://test.pypi.org, let's use it to publish our minimal package
+Create your account at https://test.pypi.org, let's use it to publish our {username} package
 :::
 
-## Publishing minimal package {.smaller}
+## Publishing {username} package {.smaller}
 
-- Go to the root of the "minimal package"
+- Go to the root (`somefolder`) of the "{username} package"
 - Create a setup.py file with the following content:
 
 ```python
 from setuptools import setup
 
 setup(
-    name='minimal_package',
+    name='{username}_package',
     version='0.0.1',
-    packages=['minimal_package']
+    packages=['{username}_package']
 )
 ```
 
 - Run `python setup.py sdist` and `python setup.py bdist_wheel`
 - Check the `dist` folder
-- Run `python -m build` (you may need to download `pip install build`)
-- Check the `dist` folder
+- Check if twine is available by running `twine` in your terminal, otherwise run `pip install twine`
+- (Make sure your Test PyPI email is verified)
 - Run `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
+
 
 ## Other packaging repositories
 
@@ -239,7 +255,6 @@ Programming paradigm to tell a history with your code
 - Programming paradigm
 - Haskell `.lhs` vs `.hs`
 - Grew in the last years
-- Data analysis
 - Jupyter notebooks, R Studio
 :::
 
@@ -259,8 +274,6 @@ flowchart
   B -- LATEX --> E["DVI (Device-independent binary)"]
 ```
 
-The process of "compile, load, and go" has been slightly lengthened to "tangle, compile, load, and go."
-
 ## Literate programming
 
 ```{mermaid}
@@ -272,9 +285,11 @@ flowchart
 
 ## Jupyter notebook introduction {.smaller}
 
-- Using the virtualenv created at minimal_package, install jupyter notebooks: `pip install notebook`
+![](images/monitor.png){.absolute top=0 right=0}
+
+- Using the virtualenv created at {username}_package, install jupyter notebooks: `pip install notebook`
 - Run `jupyter-notebook`
-- Get familiar with the UI
+- Let's get familiar with the UI
 
 ::: {.callout-tip collapse="true"}
 ## UI
@@ -291,10 +306,13 @@ Using Jupyter notebooks to publish Python packaging
 
 ## Install {.smaller}
 
-- Let's ignore our minimal project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook
+![](images/monitor.png){.absolute top=0 right=0}
+
+- Let's move on from our {username}_package project and fork the following repository: https://github.com/itepifanio/going-beyond-with-jupyter-notebooks
 - Create a new virtualenv `python -m venv tutorial`
 - Activate your new virtualenv `source ./tutorial/bin/activate`
 - Install the package running `pip install -e .[dev]`
+- Run `python ./scripts/rename_package.py {username}_deck` 
 
 :::{.callout-note}
 Let's get familiar with the nbdev structure
@@ -327,7 +345,7 @@ Jupyter notebook and nbdev best practices
 
 ## Notebook type
 
-![Know the type of notebook you're writing](https://documentation.divio.com/_images/overview.png)
+![Know the type of notebook you're writing (Diataxis System)](https://documentation.divio.com/_images/overview.png)
 
 ## Good title and subtitle
 
@@ -453,6 +471,8 @@ assert add(1, 1) == 2
 
 ## Exercice {.smaller}
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 ```python
 import collections
 
@@ -475,6 +495,8 @@ Card = collections.namedtuple("Card", ["rank", "suit"])
 We're already familiar with the `Card` defition. Let's investigate the MyDeck code.
 
 ## Exercice
+
+![](images/monitor.png){.absolute top=0 right=0}
 
 :::{.callout-note}
 - Add a code cell at the top of the `card_utils.ipynb` nb with `#| default_exp card_utils`
@@ -644,6 +666,8 @@ Run the following snippet in your terminal:
 
 # Advanced testing
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 Test isolation with i(pytest). Let's explore the advanced testing nb
 
 # Publishing
@@ -656,7 +680,7 @@ Nbdev allows publish package by using its CLI
 - [Less documented](https://github.com/fastai/nbdev/pull/1320) but it also allows Test PyPI usage (`nbdev_pypi --repository testpypi`)
 
 :::{.callout-note}
-As we did before with the `minimal_package` let's publish this package (`mydeck`) using `nbdev_pypi --repository testpypi`
+As we did before with the `{username}_package` let's publish this package (`mydeck`) using `nbdev_pypi --repository testpypi`
 :::
 
 ## Secret keys
@@ -771,6 +795,8 @@ At Test PyPI webpage access `Account Settings >> Api Tokens >> Add Api Token`
 - In your Github repository go to: `Settings >> Actions (at security tab) >> New repository secret` and add the token with the name `TEST_PYPI_API_TOKEN`
 
 ## Workflows
+
+![](images/monitor.png){.absolute top=0 right=0}
 
 (Interactive explation of files from `.github/worflows/*.yaml`)
 
@@ -894,6 +920,8 @@ We already published our package and know more about nbdev powers, let's have so
 
 ## Ipywidgets
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 Let's run the UI for jupyter notebooks nb
 
 :::{.callout-tip}
@@ -902,7 +930,14 @@ Run voila over the nb
 
 ## Chat GPT
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 Let's use Chat GPT in our nbs by running the chat gpt nb
 
 # Conclusion
 
+- Jupyter notebooks are awesome for rapid prototyping
+- Code, doc and tests can be used to tell a story and improve docs
+- Jupyter notebooks & nbdev allow literate programming
+- Publishing a package with nbdev is easy, faster and efficient
+- Visual libraries benefits a lot from nbdev
