@@ -5,9 +5,10 @@
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.335">
+  <meta name="generator" content="quarto-1.3.313">
 
   <title>Going beyond with Jupyter notebooks</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,9 +25,10 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -136,44 +138,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -205,7 +207,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -218,16 +220,16 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -242,7 +244,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -254,7 +256,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -266,7 +268,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -278,7 +280,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -290,7 +292,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -475,9 +477,9 @@
 <span id="cb3-7"><a href="#cb3-7"></a>    <span class="im">import</span> sys</span>
 <span id="cb3-8"><a href="#cb3-8"></a>    hello(sys.argv[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">!</span> python module.py <span class="st">'Maria'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -509,9 +511,9 @@
         module1.py
         subpackage/
             module2.py</code></pre>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -545,8 +547,8 @@
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
   subgraph avengers1
     A["Avengers\n (Hulk, Black Widow, Thor)"]
   end
@@ -560,16 +562,13 @@
 
   avengers1 --&gt; avengers2
 </pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
 </div>
 </div>
 </div>
-<div class="callout callout-note callout-captioned callout-style-default">
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -607,7 +606,6 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>Harder to maintain</li>
 <li>Dependency management can be difficult</li>
 <li>Security of third-party packages</li>
 <li>Packages sometimes have more features than it’s required</li>
@@ -617,20 +615,17 @@
 </section>
 <section id="how-to-publish" class="slide level2 smaller">
 <h2>How to publish?</h2>
-<p>We have previously installed our {username} package locally but how we can publish on pip and use it to download?</p>
+<p>How can we publish the package in PyPI and download it using?</p>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart TD
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
   A["Package project files (setup.py, pyproject.toml)"] --&gt; B["Build backend (sdist, wheel)"]
   B --&gt; C["Package artifact (.tar.gz, .whl)"]
   C --&gt; D["Twine upload (Pypi, TestPypi)"]
 </pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
 </div>
-<p></p>
 </div>
 </div>
 </div>
@@ -647,9 +642,9 @@
 <li><a href="https://pypi.org/">PyPI</a> is the index where pip downloads content from</li>
 <li><a href="https://packaging.python.org/en/latest/guides/using-testpypi/">Test PyPI</a> a separated index for testing</li>
 </ul>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -674,17 +669,8 @@
 <span id="cb6-5"><a href="#cb6-5"></a>    version<span class="op">=</span><span class="st">'0.0.1'</span>,</span>
 <span id="cb6-6"><a href="#cb6-6"></a>    packages<span class="op">=</span>[<span class="st">'</span><span class="sc">{username}</span><span class="st">_package'</span>]</span>
 <span id="cb6-7"><a href="#cb6-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Legacy way</strong></p>
 <ul>
 <li>Run <code>python setup.py sdist</code> and <code>python setup.py bdist_wheel</code></li>
-<li>Check the <code>dist</code> folder</li>
-</ul>
-</section>
-<section id="publishing-username-package-1" class="slide level2 smaller">
-<h2>Publishing {username} package</h2>
-<p><strong>Current</strong></p>
-<ul>
-<li>Run <code>python -m build</code> (you may need to download <code>pip install build</code>)</li>
 <li>Check the <code>dist</code> folder</li>
 <li>Check if twine is available by running <code>twine</code> in your terminal, otherwise run <code>pip install twine</code></li>
 <li>(Make sure your Test PyPI email is verified)</li>
@@ -715,7 +701,6 @@
 <li>Programming paradigm</li>
 <li>Haskell <code>.lhs</code> vs <code>.hs</code></li>
 <li>Grew in the last years</li>
-<li>Data analysis</li>
 <li>Jupyter notebooks, R Studio</li>
 </ul>
 </div><div class="column" style="width:70%;">
@@ -728,51 +713,45 @@
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart
+<div>
+<pre class="mermaid mermaid-js">flowchart
   A["WEB (language and associate programs/system)"] -- "WEAVE (processor)" --&gt; B["TEX"]
   A -- "TANGLE (processor)" --&gt; C["PAS"]
   C -- PASCAL --&gt; D["REL (binary file that can be executed)"]
   B -- LATEX --&gt; E["DVI (Device-independent binary)"]
 </pre>
-<div id="mermaid-tooltip-3" class="mermaidTooltip">
-
-</div>
-<p></p>
 </div>
 </div>
 </div>
-<p>The process of “compile, load, and go” has been slightly lengthened to “tangle, compile, load, and go.”</p>
+</div>
 </section>
 <section id="literate-programming-3" class="slide level2">
 <h2>Literate programming</h2>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">flowchart
+<div>
+<pre class="mermaid mermaid-js">flowchart
   A["Jupyter Notebook"] -- "Quarto" --&gt; B["MD"]
   A -- "Nbdev" --&gt; C["PY"]
   B -- PANDOC --&gt; E["PDF/HTML/DOCX"]
 </pre>
-<div id="mermaid-tooltip-4" class="mermaidTooltip">
-
 </div>
-<p></p>
 </div>
 </div>
 </div>
 </section>
 <section id="jupyter-notebook-introduction" class="slide level2 smaller">
 <h2>Jupyter notebook introduction</h2>
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
 <ul>
 <li>Using the virtualenv created at {username}_package, install jupyter notebooks: <code>pip install notebook</code></li>
 <li>Run <code>jupyter-notebook</code></li>
-<li>Get familiar with the UI</li>
+<li>Let’s get familiar with the UI</li>
 </ul>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -795,15 +774,17 @@
 </section>
 <section id="install" class="slide level2 smaller">
 <h2>Install</h2>
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
 <ul>
-<li>Let’s ignore our {username}_package project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook</li>
+<li>Let’s move on from our {username}_package project and fork the following repository: https://github.com/itepifanio/going-beyond-with-jupyter-notebooks</li>
 <li>Create a new virtualenv <code>python -m venv tutorial</code></li>
 <li>Activate your new virtualenv <code>source ./tutorial/bin/activate</code></li>
 <li>Install the package running <code>pip install -e .[dev]</code></li>
+<li>Run <code>python ./scripts/rename_package.py {username}_deck</code></li>
 </ul>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -821,9 +802,9 @@
 <li>nbdev_install_hooks</li>
 <li>nbdev_install_quarto</li>
 </ul>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -857,7 +838,7 @@
 <section id="notebook-type" class="slide level2">
 <h2>Notebook type</h2>
 
-<img data-src="https://documentation.divio.com/_images/overview.png" class="r-stretch quarto-figure-center"><p class="caption">Know the type of notebook you’re writing</p></section>
+<img data-src="https://documentation.divio.com/_images/overview.png" class="r-stretch quarto-figure-center"><p class="caption">Know the type of notebook you’re writing (Diataxis System)</p></section>
 <section id="good-title-and-subtitle" class="slide level2">
 <h2>Good title and subtitle</h2>
 <p>There are two ways of doing that, one with markdown:</p>
@@ -922,29 +903,81 @@
 <section id="doc-parameters-1" class="slide level2 smaller">
 <h2>Doc parameters</h2>
 <div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<hr>
+<h3 id="add_np">add_np</h3>
+<blockquote>
+<pre><code> add_np (a, b=0)</code></pre>
+</blockquote>
+<p>The sum of two numbers.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td>int</td>
+<td></td>
+<td>the 1st number to add</td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td>int</td>
+<td>0</td>
+<td>the 2nd number to add (default: 0)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
 <section id="doc-parameters-2" class="slide level2 smaller">
 <h2>Doc parameters</h2>
 <p>And the nbdev approach called “docments”</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> add(</span>
-<span id="cb12-2"><a href="#cb12-2"></a>    a: <span class="bu">int</span>,  <span class="co"># the 1st number to add</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>    b<span class="op">=</span><span class="dv">0</span>,  <span class="co"># the 2nd number to add</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>):</span>
-<span id="cb12-5"><a href="#cb12-5"></a>    <span class="co">"The sum of two numbers."</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> add(</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    a: <span class="bu">int</span>,  <span class="co"># the 1st number to add</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>    b<span class="op">=</span><span class="dv">0</span>,  <span class="co"># the 2nd number to add</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>):</span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="co">"The sum of two numbers."</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="3">
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'itepifaniodeck'</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<hr>
+<h3 id="add">add</h3>
+<blockquote>
+<pre><code> add (a:int, b=0)</code></pre>
+</blockquote>
+<p>The sum of two numbers.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td>int</td>
+<td></td>
+<td>the 1st number to add</td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td>int</td>
+<td>0</td>
+<td>the 2nd number to add</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
@@ -954,16 +987,17 @@
 <li>Keyword assert can be used for testing</li>
 <li>Run <code>nbdev_test</code></li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="cf">assert</span> add(<span class="dv">1</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">assert</span> add(<span class="dv">1</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercice" class="slide level2 smaller">
 <h2>Exercice</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> collections</span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a>Card <span class="op">=</span> collections.namedtuple(<span class="st">"Card"</span>, [<span class="st">"rank"</span>, <span class="st">"suit"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-note callout-captioned callout-style-default">
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> collections</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>Card <span class="op">=</span> collections.namedtuple(<span class="st">"Card"</span>, [<span class="st">"rank"</span>, <span class="st">"suit"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -991,9 +1025,10 @@
 </section>
 <section id="exercice-1" class="slide level2">
 <h2>Exercice</h2>
-<div class="callout callout-note callout-captioned callout-style-default">
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1080,7 +1115,7 @@
 <li>Isort</li>
 </ul>
 <p>All of them (and some others) can be executed using NbQA</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">nbqa</span> <span class="op">&lt;</span>tool-name<span class="op">&gt;</span> <span class="op">&lt;</span>tool-params<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">nbqa</span> <span class="op">&lt;</span>tool-name<span class="op">&gt;</span> <span class="op">&lt;</span>tool-params<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mypy" class="slide level2 smaller">
 <h2>MyPy</h2>
@@ -1088,27 +1123,27 @@
 <p>Static type checker. It validates your code typing without executing it</p>
 </blockquote>
 <p>Previous to Python 3.5 (we didn’t have typing), it was common the docstring usage to define types:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> natural_sum(x, y):</span>
-<span id="cb18-2"><a href="#cb18-2"></a>    <span class="co">"""</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="co">    Args:</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="co">        x (int): first parameter of the sum</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="co">        y (int): second parameter of the sum</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="co">    Returns:</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="co">        Optional[int]: Sum of x and y if both bigger than zero</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="co">    """</span></span>
-<span id="cb18-9"><a href="#cb18-9"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb18-10"><a href="#cb18-10"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a></span>
-<span id="cb18-12"><a href="#cb18-12"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> natural_sum(x, y):</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="co">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">    Args:</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co">        x (int): first parameter of the sum</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co">        y (int): second parameter of the sum</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co">    Returns:</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co">        Optional[int]: Sum of x and y if both bigger than zero</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co">    """</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb16-10"><a href="#cb16-10"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mypy-1" class="slide level2 smaller">
 <h2>MyPy</h2>
 <p>The need of tools to validate data typing made Python add the typing system to its core.</p>
 <p>Run the following snippet on your terminal:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ot">! </span><span class="ex">nbqa</span> mypy <span class="pp">*</span>.ipynb <span class="at">--ignore-missing-imports</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ot">! </span><span class="ex">nbqa</span> mypy <span class="pp">*</span>.ipynb <span class="at">--ignore-missing-imports</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1119,9 +1154,9 @@
 </div>
 </div>
 </div>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1129,10 +1164,10 @@
 </div>
 <div class="callout-content">
 <p>Check MyPy usage creating a adding function:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> add(a: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> add(a: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and testing the function using:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>add(<span class="st">'1'</span>, <span class="st">'2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>add(<span class="st">'1'</span>, <span class="st">'2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1144,10 +1179,10 @@
 </blockquote>
 <p>It saves time when team start discussing empty spaces and small code style details on pull requests</p>
 <p>Run the following snippet in your terminal:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ot">! </span><span class="ex">nbqa</span> flake8 <span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ot">! </span><span class="ex">nbqa</span> flake8 <span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1169,7 +1204,7 @@
 </blockquote>
 <p>Is very useful to clean empty space and format notebooks with a well known code style</p>
 <p>Run the following snippet in your terminal:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="ot">! </span><span class="ex">nbqa</span> autopep8 nbs/<span class="pp">*</span>.ipynb <span class="at">--in-place</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ot">! </span><span class="ex">nbqa</span> autopep8 nbs/<span class="pp">*</span>.ipynb <span class="at">--in-place</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="black" class="slide level2">
 <h2>Black</h2>
@@ -1178,10 +1213,11 @@
 </blockquote>
 <p>Works similar to autopep8 but not restrinted to PEP 8</p>
 <p>Run the following snippet in your terminal:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ot">! </span><span class="ex">nbqa</span> black nbs/<span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ot">! </span><span class="ex">nbqa</span> black nbs/<span class="pp">*</span>.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section id="advanced-testing" class="title-slide slide level1 center">
 <h1>Advanced testing</h1>
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
 <p>Test isolation with i(pytest). Let’s explore the advanced testing nb</p>
 </section>
 
@@ -1196,9 +1232,9 @@
 <li>It can publish on both: <code>nbdev_pypi</code>, <code>nbdev_conda</code>, <code>nbdev_release_both</code></li>
 <li><a href="https://github.com/fastai/nbdev/pull/1320">Less documented</a> but it also allows Test PyPI usage (<code>nbdev_pypi --repository testpypi</code>)</li>
 </ul>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1213,46 +1249,46 @@
 <section id="secret-keys" class="slide level2">
 <h2>Secret keys</h2>
 <p>Python package system uses the <a href="https://packaging.python.org/en/latest/specifications/pypirc/">.pypirc</a> to define the repository packages:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="dt">username</span><span class="op">=</span><span class="er">&lt;your-username&gt;</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="dt">password</span><span class="op">=</span><span class="er">&lt;your-password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="dt">testpypi</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="dt">repository</span><span class="op">=</span><span class="dt">https</span><span class="er">://</span><span class="dt">test</span><span class="kw">.</span><span class="dt">pypi</span><span class="kw">.</span><span class="dt">org</span><span class="er">/</span><span class="dt">legacy</span><span class="er">/</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="dt">username</span><span class="op">=</span><span class="er">&lt;</span><span class="dt">your-username</span><span class="er">&gt;</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="dt">password</span><span class="op">=</span><span class="er">&lt;</span><span class="dt">your-password</span><span class="er">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="secret-keys-1" class="slide level2">
 <h2>Secret keys</h2>
 <p>Username and password usage are not encouraged, consider gerate a token for your package:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="er">testpypi</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a></span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a><span class="dt">repository</span><span class="op">=</span><span class="er">https://test.pypi.org/legacy/</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="dt">index-servers</span> <span class="op">=</span> <span class="dt">testpypi</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="dt">repository</span><span class="op">=</span><span class="dt">https</span><span class="er">://</span><span class="dt">test</span><span class="kw">.</span><span class="dt">pypi</span><span class="kw">.</span><span class="dt">org</span><span class="er">/</span><span class="dt">legacy</span><span class="er">/</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="dt">username</span> <span class="op">=</span> <span class="dt">__token__</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;</span><span class="dt">PyPI</span> <span class="dt">token</span><span class="er">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="custom-repositories" class="slide level2 smaller">
 <h2>Custom repositories</h2>
 <p>To add custom repositories (private or not) you can change the <code>~/.pypirc</code> and add the repository name to <code>[distutils]</code></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="dt">index-servers</span> <span class="op">=</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>    <span class="dt">pypi</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>    <span class="dt">testpypi</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>    <span class="dt">private-repository</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a></span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="kw">[</span><span class="dt">pypi</span><span class="kw">]</span></span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;PyPI</span> <span class="er">token&gt;</span></span>
-<span id="cb27-10"><a href="#cb27-10"></a></span>
-<span id="cb27-11"><a href="#cb27-11"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
-<span id="cb27-12"><a href="#cb27-12"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">__token__</span></span>
-<span id="cb27-13"><a href="#cb27-13"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;TestPyPI</span> <span class="er">token&gt;</span></span>
-<span id="cb27-14"><a href="#cb27-14"></a></span>
-<span id="cb27-15"><a href="#cb27-15"></a><span class="kw">[</span><span class="dt">private-repository</span><span class="kw">]</span></span>
-<span id="cb27-16"><a href="#cb27-16"></a><span class="dt">repository</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">URL&gt;</span></span>
-<span id="cb27-17"><a href="#cb27-17"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">username&gt;</span></span>
-<span id="cb27-18"><a href="#cb27-18"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;private-repository</span> <span class="er">password&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">[</span><span class="dt">distutils</span><span class="kw">]</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="dt">index-servers</span> <span class="op">=</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>    <span class="dt">pypi</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>    <span class="dt">testpypi</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>    <span class="dt">private-repository</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="kw">[</span><span class="dt">pypi</span><span class="kw">]</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="dt">username</span> <span class="op">=</span> <span class="dt">__token__</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;</span><span class="dt">PyPI</span> <span class="dt">token</span><span class="er">&gt;</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="kw">[</span><span class="dt">testpypi</span><span class="kw">]</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="dt">username</span> <span class="op">=</span> <span class="dt">__token__</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;</span><span class="dt">TestPyPI</span> <span class="dt">token</span><span class="er">&gt;</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a></span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="kw">[</span><span class="dt">private-repository</span><span class="kw">]</span></span>
+<span id="cb25-16"><a href="#cb25-16"></a><span class="dt">repository</span> <span class="op">=</span> <span class="er">&lt;</span><span class="dt">private-repository</span> <span class="dt">URL</span><span class="er">&gt;</span></span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="dt">username</span> <span class="op">=</span> <span class="er">&lt;</span><span class="dt">private-repository</span> <span class="dt">username</span><span class="er">&gt;</span></span>
+<span id="cb25-18"><a href="#cb25-18"></a><span class="dt">password</span> <span class="op">=</span> <span class="er">&lt;</span><span class="dt">private-repository</span> <span class="dt">password</span><span class="er">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="cicd" class="title-slide slide level1 center">
@@ -1273,8 +1309,8 @@
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart LR
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
   subgraph CI
     A["Build"] --&gt; B["Test"] --&gt; C["Merge"]
   end
@@ -1285,10 +1321,7 @@
   
   C --&gt; D
 </pre>
-<div id="mermaid-tooltip-5" class="mermaidTooltip">
-
 </div>
-<p></p>
 </div>
 </div>
 </div>
@@ -1325,9 +1358,9 @@
 <ul>
 <li>Let’s create a token for our mydeck repository</li>
 </ul>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1344,13 +1377,14 @@
 </section>
 <section id="workflows" class="slide level2">
 <h2>Workflows</h2>
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
 <p>(Interactive explation of files from <code>.github/worflows/*.yaml</code>)</p>
 </section>
 <section id="publising-using-ci" class="slide level2">
 <h2>Publising using CI</h2>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1404,9 +1438,9 @@
 <section id="executing" class="slide level2">
 <h2>Executing</h2>
 <p>Try to execute <code>quarto preview nbs/00_deck.ipynb</code> in the terminal</p>
-<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1421,53 +1455,53 @@
 <section id="doc-preview" class="slide level2">
 <h2>Doc preview</h2>
 <p>Change ports when rendering nbdev docs can be annoying, change <code>_quarto.yml</code> to fix a port and avoid opening new tabs.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="at">  </span><span class="fu">preview</span><span class="kw">:</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="at">    </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3000</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="at">    </span><span class="fu">browser</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="at">  </span><span class="fu">preview</span><span class="kw">:</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="at">    </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3000</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="at">    </span><span class="fu">browser</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="doc-navigation" class="slide level2">
 <h2>Doc navigation</h2>
 <p>Quarto allows easy customization of the navbar</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="at">    </span><span class="fu">background</span><span class="kw">:</span><span class="at"> primary</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="at">      </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="at">      </span><span class="fu">collapse-below</span><span class="kw">:</span><span class="at"> lg</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="at">      </span><span class="fu">left</span><span class="kw">:</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"My page"</span></span>
-<span id="cb29-8"><a href="#cb29-8"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> gettings_started.ipynb</span></span>
-<span id="cb29-9"><a href="#cb29-9"></a><span class="at">      </span><span class="fu">right</span><span class="kw">:</span></span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
-<span id="cb29-11"><a href="#cb29-11"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/user/project"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="at">    </span><span class="fu">background</span><span class="kw">:</span><span class="at"> primary</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="at">      </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="at">      </span><span class="fu">collapse-below</span><span class="kw">:</span><span class="at"> lg</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="at">      </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"My page"</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> gettings_started.ipynb</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="at">      </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="at">          </span><span class="fu">href</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/user/project"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="google-analytics" class="slide level2">
 <h2>Google analytics</h2>
 <p>Activate analytics tracking but remember asking for cookie consent if your country legislation requires it</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> </span><span class="st">"UA-XXXXXXXX"</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> </span><span class="st">"UA-XXXXXXXX"</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dark-mode" class="slide level2">
 <h2>Dark mode</h2>
 <p>You can define the quarto theme to (de)activate dark mode</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> flatly</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> darkly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> flatly</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> darkly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="page-navigation" class="slide level2">
 <h2>Page navigation</h2>
 <p>Your project may require continuous page navigation</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="at">  </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="at">  </span><span class="fu">page-navigation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="reader-mode" class="slide level2">
 <h2>Reader mode</h2>
 <p>Enable reader mode</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="at">  </span><span class="fu">reader-mode</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="at">  </span><span class="fu">reader-mode</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="playgroud" class="title-slide slide level1 center">
@@ -1476,10 +1510,11 @@
 </section>
 <section id="ipywidgets" class="slide level2">
 <h2>Ipywidgets</h2>
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
 <p>Let’s run the UI for jupyter notebooks nb</p>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1493,10 +1528,17 @@
 </section>
 <section id="chat-gpt" class="slide level2">
 <h2>Chat GPT</h2>
+<p><img data-src="images/monitor.png" class="absolute" style="top: 0px; right: 0px; "></p>
 <p>Let’s use Chat GPT in our nbs by running the chat gpt nb</p>
 </section></section>
 <section id="conclusion" class="title-slide slide level1 center">
 <h1>Conclusion</h1>
+<ul>
+<li>Jupyter notebooks &amp; nbdev allow literate programming</li>
+<li>Publishing a package with nbdev is easy</li>
+<li>Code, doc and tests can be used to tell a story</li>
+<li>Visual libraries benefits a lot from nbdev</li>
+</ul>
 
 <img src="images/palaimon_logo.svg" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Going beyond with Jupyter notebooks</p>
@@ -1533,7 +1575,7 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1737,9 +1779,23 @@
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
       const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
         }
       });
       clipboard.on('success', function(e) {
@@ -1787,7 +1843,7 @@
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
+          theme: 'light-border',
           placement: 'bottom-start'
         };
           config['offset'] = [0,0];

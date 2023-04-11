@@ -5,5 +5,8 @@
 
 figcaption {
     text-align: center;
-    color: gray;
+}
+
+.cluster rect {
+    fill: white !important;
 }

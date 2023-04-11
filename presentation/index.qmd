@@ -179,7 +179,6 @@ To reutilize different heroes in different timeline it would be required code du
 :::
 
 ::: {.column width="50%"}
-- Harder to maintain
 - Dependency management can be difficult
 - Security of third-party packages
 - Packages sometimes have more features than it's required
@@ -189,8 +188,7 @@ To reutilize different heroes in different timeline it would be required code du
 
 ## How to publish? {.smaller}
 
-We have previously installed our {username} package locally but how we can 
-publish on pip and use it to download?
+How can we publish the package in PyPI and download it using?
 
 ```{mermaid}
 flowchart TD
@@ -228,16 +226,7 @@ setup(
 )
 ```
 
-**Legacy way**
-
 - Run `python setup.py sdist` and `python setup.py bdist_wheel`
-- Check the `dist` folder
-
-## Publishing {username} package {.smaller}
-
-**Current**
-
-- Run `python -m build` (you may need to download `pip install build`)
 - Check the `dist` folder
 - Check if twine is available by running `twine` in your terminal, otherwise run `pip install twine`
 - (Make sure your Test PyPI email is verified)
@@ -266,7 +255,6 @@ Programming paradigm to tell a history with your code
 - Programming paradigm
 - Haskell `.lhs` vs `.hs`
 - Grew in the last years
-- Data analysis
 - Jupyter notebooks, R Studio
 :::
 
@@ -286,8 +274,6 @@ flowchart
   B -- LATEX --> E["DVI (Device-independent binary)"]
 ```
 
-The process of "compile, load, and go" has been slightly lengthened to "tangle, compile, load, and go."
-
 ## Literate programming
 
 ```{mermaid}
@@ -299,9 +285,11 @@ flowchart
 
 ## Jupyter notebook introduction {.smaller}
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 - Using the virtualenv created at {username}_package, install jupyter notebooks: `pip install notebook`
 - Run `jupyter-notebook`
-- Get familiar with the UI
+- Let's get familiar with the UI
 
 ::: {.callout-tip collapse="true"}
 ## UI
@@ -318,10 +306,13 @@ Using Jupyter notebooks to publish Python packaging
 
 ## Install {.smaller}
 
-- Let's ignore our {username}_package project and fork the following repository: https://github.com/itepifanio/indo-alem-com-jupyter-notebook
+![](images/monitor.png){.absolute top=0 right=0}
+
+- Let's move on from our {username}_package project and fork the following repository: https://github.com/itepifanio/going-beyond-with-jupyter-notebooks
 - Create a new virtualenv `python -m venv tutorial`
 - Activate your new virtualenv `source ./tutorial/bin/activate`
 - Install the package running `pip install -e .[dev]`
+- Run `python ./scripts/rename_package.py {username}_deck` 
 
 :::{.callout-note}
 Let's get familiar with the nbdev structure
@@ -354,7 +345,7 @@ Jupyter notebook and nbdev best practices
 
 ## Notebook type
 
-![Know the type of notebook you're writing](https://documentation.divio.com/_images/overview.png)
+![Know the type of notebook you're writing (Diataxis System)](https://documentation.divio.com/_images/overview.png)
 
 ## Good title and subtitle
 
@@ -480,6 +471,8 @@ assert add(1, 1) == 2
 
 ## Exercice {.smaller}
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 ```python
 import collections
 
@@ -502,6 +495,8 @@ Card = collections.namedtuple("Card", ["rank", "suit"])
 We're already familiar with the `Card` defition. Let's investigate the MyDeck code.
 
 ## Exercice
+
+![](images/monitor.png){.absolute top=0 right=0}
 
 :::{.callout-note}
 - Add a code cell at the top of the `card_utils.ipynb` nb with `#| default_exp card_utils`
@@ -671,6 +666,8 @@ Run the following snippet in your terminal:
 
 # Advanced testing
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 Test isolation with i(pytest). Let's explore the advanced testing nb
 
 # Publishing
@@ -799,6 +796,8 @@ At Test PyPI webpage access `Account Settings >> Api Tokens >> Add Api Token`
 
 ## Workflows
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 (Interactive explation of files from `.github/worflows/*.yaml`)
 
 ## Publising using CI
@@ -921,6 +920,8 @@ We already published our package and know more about nbdev powers, let's have so
 
 ## Ipywidgets
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 Let's run the UI for jupyter notebooks nb
 
 :::{.callout-tip}
@@ -929,7 +930,14 @@ Run voila over the nb
 
 ## Chat GPT
 
+![](images/monitor.png){.absolute top=0 right=0}
+
 Let's use Chat GPT in our nbs by running the chat gpt nb
 
 # Conclusion
 
+- Jupyter notebooks are awesome for rapid prototyping
+- Code, doc and tests can be used to tell a story and improve docs
+- Jupyter notebooks & nbdev allow literate programming
+- Publishing a package with nbdev is easy, faster and efficient
+- Visual libraries benefits a lot from nbdev
