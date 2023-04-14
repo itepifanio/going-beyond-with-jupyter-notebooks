@@ -14,13 +14,14 @@ from fastcore.basics import patch
 Card = collections.namedtuple("Card", ["rank", "suit"])
 
 # %% ../nbs/00_deck.ipynb 9
-# | code-fold: true
+#| code-fold: true
 class FrenchDeck:
     ranks = [n for n in range(1, 14)]
     suits = "spades diamonds clubs hearts".split()
 
     def __init__(self):
-        self.cards = [Card(rank, suit) for suit in self.suits for rank in self.ranks]
+        self.cards = [Card(rank, suit)
+                      for suit in self.suits for rank in self.ranks]
 
     def __len__(self):
         return len(self.cards)
