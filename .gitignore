@@ -8,3 +8,4 @@ dist
 build
 *_files
 .pytest_cache
+presentation/*.html

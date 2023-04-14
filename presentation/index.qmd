@@ -226,6 +226,7 @@ setup(
 )
 ```
 
+- Create a virtualenv `python -m venv minimal_package && souce minimal_package/bin/activate`
 - Run `python setup.py sdist` and `python setup.py bdist_wheel`
 - Check the `dist` folder
 - Check if twine is available by running `twine` in your terminal, otherwise run `pip install twine`
@@ -289,7 +290,7 @@ flowchart
 
 - Using the virtualenv created at {username}_package, install jupyter notebooks: `pip install notebook`
 - Run `jupyter-notebook`
-- Let's get familiar with the UI
+- Let's get familiar with the UI (shortcuts, cell nav, cell types, .ipynb format)
 
 ::: {.callout-tip collapse="true"}
 ## UI
@@ -315,7 +316,7 @@ Using Jupyter notebooks to publish Python packaging
 - Run `python ./scripts/rename_package.py {username}_deck` 
 
 :::{.callout-note}
-Let's get familiar with the nbdev structure
+Let's get familiar with the nbdev structure (settings.ini, nbs/, setup.py)
 :::
 
 ## Post installation
@@ -326,6 +327,15 @@ Let's get familiar with the nbdev structure
 :::{.callout-tip}
 Run `nbdev_help` in your terminal and check all commands available
 :::
+
+## Nbdev magic comments
+
+- `#| hide`
+- `#| export`
+- `#| exporti`
+- `#| exec_doc`
+- `#| code-fold`
+- `#| default_exp core`
 
 ## Nbdev awesome projects {.smaller}
 
