@@ -229,10 +229,13 @@ setup(
 - Create a virtualenv `python -m venv minimal_package && souce minimal_package/bin/activate`
 - Run `python setup.py sdist` and `python setup.py bdist_wheel`
 - Check the `dist` folder
+
+## Publishing {username} package {.smaller}
+
 - Check if twine is available by running `twine` in your terminal, otherwise run `pip install twine`
 - (Make sure your Test PyPI email is verified)
 - Run `twine upload --repository-url https://test.pypi.org/legacy/ dist/*`
-
+- Check your Test Pypi account
 
 ## Other packaging repositories
 
@@ -305,6 +308,10 @@ There are additional UIs, like the VSCode plugin that renders notebooks, but I r
 
 Using Jupyter notebooks to publish Python packaging
 
+## Nbdev
+
+![](images/card.png)
+
 ## Install {.smaller}
 
 ![](images/monitor.png){.absolute top=0 right=0}
@@ -313,18 +320,13 @@ Using Jupyter notebooks to publish Python packaging
 - Create a new virtualenv `python -m venv tutorial`
 - Activate your new virtualenv `source ./tutorial/bin/activate`
 - Install the package running `pip install -e .[dev]`
+- nbdev_install_hooks
+- nbdev_install_quarto
 - Run `python ./scripts/rename_package.py {username}_deck` 
 
 :::{.callout-note}
 Let's get familiar with the nbdev structure (settings.ini, nbs/, setup.py)
-:::
 
-## Post installation
-
-- nbdev_install_hooks
-- nbdev_install_quarto
-
-:::{.callout-tip}
 Run `nbdev_help` in your terminal and check all available commands
 :::
 
