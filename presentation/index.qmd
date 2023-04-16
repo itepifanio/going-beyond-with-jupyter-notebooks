@@ -938,7 +938,7 @@ We've already published our package and know more about nbdev powers, let's have
 Let's run the UI for jupyter notebooks nb
 
 :::{.callout-tip}
-Run voila over the nb
+Run voila over the `03_ui_for_jupyter_notebook.ipynb` using `voila 03_ui_for_jupyter_notebook.ipynb` 
 :::
 
 ## Chat GPT
