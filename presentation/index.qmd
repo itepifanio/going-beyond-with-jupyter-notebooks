@@ -482,7 +482,7 @@ show_doc(add)
 assert add(1, 1) == 2
 ```
 
-## Exercice {.smaller}
+## Exercise {.smaller}
 
 ![](images/monitor.png){.absolute top=0 right=0}
 
@@ -503,9 +503,9 @@ Card = collections.namedtuple("Card", ["rank", "suit"])
 - Run `nbdev_test` and check if the tests are passing
 :::
 
-# My Deck package
+# Package
 
-We're already familiar with the `Card` definition. Let's investigate the MyDeck code.
+We're already familiar with the `Card` definition. Let's investigate the package code.
 
 ## Exercise
 
@@ -513,9 +513,9 @@ We're already familiar with the `Card` definition. Let's investigate the MyDeck 
 
 :::{.callout-note}
 - Add a code cell at the top of the `card_utils.ipynb` nb with `#| default_exp card_utils`
-- Next, add a code cell with `from nbdev import nbdev_export`
+- Next, add a code cell with `from nbdev import nbdev_export` (remember adding a `#| export` comment to the `def card_utils(...)` cell)
 - At the end of `card_utils.ipynb` add `nbdev_export()`
-- Execute nb and check the `mydeck` folder
+- Execute nb and check the `{username}_deck` folder
 :::
 
 # Dependencies
@@ -545,7 +545,7 @@ Avoid dependency hell for others
 non-negative integers and each element SHOULD increase numerically
 - MAJOR.MINOR.PATCH
 
-## Keep a changelog {.smaller}
+## Keep a changelog
 
 - Semantic versioning is very didatic but it's not human readable
 - Changelog keeps a chronological order list of notable changes of 
@@ -693,7 +693,7 @@ Nbdev allows publish package by using its CLI
 - [Less documented](https://github.com/fastai/nbdev/pull/1320) but it also allows Test PyPI usage (`nbdev_pypi --repository testpypi`)
 
 :::{.callout-note}
-As we did before with the `{username}_package` let's publish this package (`mydeck`) using `nbdev_pypi --repository testpypi`
+As we did before with the `{username}_package` let's publish this package using `nbdev_pypi --repository testpypi`
 :::
 
 ## Secret keys
@@ -799,7 +799,7 @@ And many others
 
 ## Github secrets & Test Pypi token {.smaller}
 
-- Let's create a token for our mydeck repository
+- Let's create a token for our {username}_deck repository
 
 :::{.callout-note}
 At Test PyPI webpage access `Account Settings >> Api Tokens >> Add Api Token`
