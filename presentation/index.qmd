@@ -47,7 +47,7 @@ This tutorial will:
 - Talk about Python packaging past and future
 - Introduce how to build UI for notebooks
 - Show Quarto customization
-- Display how to use Chat GPT in notebooks
+- Demonstrate how to use ChatGPT in notebooks
 
 # Python packaging
 
@@ -941,11 +941,11 @@ Let's run the UI for jupyter notebooks nb
 Run voila over the `03_ui_for_jupyter_notebook.ipynb` using `voila 03_ui_for_jupyter_notebook.ipynb` 
 :::
 
-## Chat GPT
+## ChatGPT
 
 ![](images/monitor.png){.absolute top=0 right=0}
 
-Let's use Chat GPT in our nbs by running the chat gpt nb
+Let's use ChatGPT in our nbs by running the ChatGPT nb
 
 # Conclusion
 

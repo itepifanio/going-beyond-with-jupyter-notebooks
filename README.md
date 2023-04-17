@@ -49,3 +49,14 @@ has been working for the last couple years developing and publishing
 
 The tutorial presentation is available at the `presentation` folder. Run
 the presentation by using `quarto preview presentation/index.qmd`
+
+You can install quarto from the [official website](https://quarto.org/docs/get-started/).
+
+## Getting started
+
+We recommend to create a virtual environment to install the dependencies required to create the presentation
+and run the included notebooks.
+
+- `python -m venv venv`
+- `source venv/bin/activate`
+- `pip install nbdev jupyterlab matplotlib black ipytest ipywidgets`
