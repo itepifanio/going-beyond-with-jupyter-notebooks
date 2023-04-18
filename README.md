@@ -4,11 +4,11 @@
 
 ## Why using Jupyter notebooks to publish packages
 
-Jupyter notebook is a tool that combines text and code at the same file,
+Jupyter notebook is a tool that combines text and code on the same file,
 this concept is called “literate programming” and it’s considered a
 programming paradigm focused on humans.
 
-> Jupyter notebook allows programmers to tell a history with their code
+> Jupyter notebook allows programmers to tell a story with their code
 
 Although being a very well-regarded concept discussed by respected
 researchers like [Donald
@@ -21,19 +21,18 @@ The [Nbdev](http://nbdev.fast.ai/) library has proven that literate
 programming is useful in developing big and serious projects, like
 [FastAi](https://github.com/fastai/fastai). This tutorial will show
 attendees how to get the benefits of literate programming while also
-following software development best practices. We’ll get hands-on
+following software development best practices. We’ll get an hands-on
 experience in writing and publishing a Python Package while using
 Jupyter Notebooks. In addition to publishing the package, we’ll also
-learn how to deploy the docs, run simple tests and run these tests on
-CI/CD, making sure that our package will only get published if the tests
-pass.
+learn how to deploy the docs, run simple tests and run them on CI/CD,
+making sure that our package will only get published if the tests pass.
 
 ## Which package will be developed?
 
 A [French
 Deck](https://en.wikipedia.org/wiki/French-suited_playing_cards), one of
-the most common decks in games, that contains 52 cards splitted between
-4 suits.
+the most common decks in games, that contains 52 cards split between 4
+suits.
 
 The package will be used to develop a simple
 [blackjack](https://pt.wikipedia.org/wiki/Blackjack) as a proof of
@@ -50,13 +49,16 @@ has been working for the last couple years developing and publishing
 The tutorial presentation is available at the `presentation` folder. Run
 the presentation by using `quarto preview presentation/index.qmd`
 
-You can install quarto from the [official website](https://quarto.org/docs/get-started/).
+You can install quarto from the [official
+website](https://quarto.org/docs/get-started/) or using nbdev CLI by
+running `nbdev_install_quarto`
 
 ## Getting started
 
-We recommend to create a virtual environment to install the dependencies required to create the presentation
-and run the included notebooks.
+We recommend to create a virtual environment to install the dependencies
+required to create the presentation and run the included notebooks
 
 - `python -m venv venv`
 - `source venv/bin/activate`
-- `pip install nbdev jupyterlab matplotlib black ipytest ipywidgets`
+- `pip install -e .[dev]` or
+  `pip install nbdev jupyterlab matplotlib black ipytest ipywidgets`
