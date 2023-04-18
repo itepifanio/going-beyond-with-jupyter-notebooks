@@ -11,11 +11,12 @@ from fastcore.basics import patch
 from itepifanio_deck.core import Card
 
 # %% ../nbs/01_hand.ipynb 3
-#| code-fold: true
+# | code-fold: true
 class Hand:
     def __init__(
         # Max amount of cards it can be hold
-        self, max_cards: Optional[int] = None
+        self,
+        max_cards: Optional[int] = None,
     ):
         self._max_cards = max_cards
         self.cards: List[Card] = []
@@ -51,4 +52,4 @@ def discard(self: Hand, index: int = 0) -> Optional[Card]:
 # %% ../nbs/01_hand.ipynb 6
 @patch
 def value(self: Hand) -> int:
-    return sum([card.rank for card in self])
+    return sum(card.rank for card in self)
