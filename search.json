@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Going beyond with Jupyter notebooks",
+    "section": "",
+    "text": "Jupyter notebook is a tool that combines text and code on the same file, this concept is called “literate programming” and it’s considered a programming paradigm focused on humans.\n\nJupyter notebook allows programmers to tell a story with their code\n\nAlthough being a very well-regarded concept discussed by respected researchers like Donald Knuth, literate programming tools like Jupyter notebooks are considered inefficient for serious software development. This perception has limited Jupyter notebooks to simple python scripts and educational materials.\nThe Nbdev library has proven that literate programming is useful in developing big and serious projects, like FastAi. This tutorial will show attendees how to get the benefits of literate programming while also following software development best practices. We’ll get an hands-on experience in writing and publishing a Python Package while using Jupyter Notebooks. In addition to publishing the package, we’ll also learn how to deploy the docs, run simple tests and run them on CI/CD, making sure that our package will only get published if the tests pass."
+  },
+  {
+    "objectID": "index.html#which-package-will-be-developed",
+    "href": "index.html#which-package-will-be-developed",
+    "title": "Going beyond with Jupyter notebooks",
+    "section": "Which package will be developed?",
+    "text": "Which package will be developed?\nA French Deck, one of the most common decks in games, that contains 52 cards split between 4 suits.\nThe package will be used to develop a simple blackjack as a proof of concept."
+  },
+  {
+    "objectID": "index.html#authoring",
+    "href": "index.html#authoring",
+    "title": "Going beyond with Jupyter notebooks",
+    "section": "Authoring",
+    "text": "Authoring\nÍtalo Epifânio is a RnD Python Developer that has been working for the last couple years developing and publishing packages using nbdev."
+  },
+  {
+    "objectID": "index.html#presentation",
+    "href": "index.html#presentation",
+    "title": "Going beyond with Jupyter notebooks",
+    "section": "Presentation",
+    "text": "Presentation\nThe tutorial presentation is available at the presentation folder. Run the presentation by using quarto preview presentation/index.qmd\nYou can install quarto from the official website or using nbdev CLI by running nbdev_install_quarto"
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Going beyond with Jupyter notebooks",
+    "section": "Getting started",
+    "text": "Getting started\nWe recommend to create a virtual environment to install the dependencies required to create the presentation and run the included notebooks\n\npython -m venv venv\nsource venv/bin/activate\npip install -e .[dev] or pip install nbdev jupyterlab matplotlib black ipytest ipywidgets"
+  },
+  {
+    "objectID": "ui_for_jupyter_notebooks.html",
+    "href": "ui_for_jupyter_notebooks.html",
+    "title": "UI",
+    "section": "",
+    "text": "from itepifanio_deck.utils import Hand\nfrom itepifanio_deck.core import FrenchDeck\n\nimport ipywidgets as widgets\nfrom fastcore.basics import patch\nYou may need to execute jupyter nbextension enable --py widgetsnbextension and restart the nb to output the widgets."
+  },
+  {
+    "objectID": "ui_for_jupyter_notebooks.html#deck-and-cards-ui",
+    "href": "ui_for_jupyter_notebooks.html#deck-and-cards-ui",
+    "title": "UI",
+    "section": "Deck and cards UI",
+    "text": "Deck and cards UI\nThe card and deck are represented as buttons in the UI\n\ndef card_button_factory(name: str):\n    return widgets.Button(\n        disable=True,\n        description=name,\n        layout=widgets.Layout(height=\"auto\", width=\"auto\"),\n    )\n\n\ncard_button = card_button_factory(\"test\")\ncard_button\n\nSince the deck is a single button we can define them in a Layout\n\nclass GameLayout(widgets.TwoByTwoLayout):\n    def __init__(self, *args, **kwargs):\n        self.deck_button = widgets.Button(\n            description=\"Deck (52)\",\n            tooltip=\"click me to draw a card!\",\n            layout=widgets.Layout(height=\"100%\", width=\"auto\"),\n        )\n\n        self.reset_button = widgets.Button(\n            description=\"Reset\",\n            layout=widgets.Layout(height=\"auto\", width=\"auto\")\n        )\n\n        self.displayer = widgets.Text(\n            value=\"Pull a card\",\n            disabled=True,\n            layout=widgets.Layout(width=\"50%\")\n        )\n\n        super().__init__(\n            top_left=self.deck_button,\n            top_right=widgets.HBox([self.reset_button, self.displayer]),\n            bottom_right=widgets.HBox([]),\n            justify_items=\"center\",\n            width=\"50%\",\n            align_items=\"center\",\n        )\n\n\nGameLayout()\n\n\n@patch\ndef on_deck_click(self: GameLayout, callback):\n    self.top_left.on_click(callback)\n\n\n@patch\ndef on_reset_click(self: GameLayout, callback):\n    reset_button = self.top_right.children[0]\n    reset_button.on_click(callback)\n\n\n@patch\ndef update_num_cards(self: GameLayout, number: int):\n    self.top_left.description = f\"Deck ({number})\"\n\n\n@patch\ndef clear_hand(self: GameLayout):\n    self.bottom_right = widgets.HBox([])\n\n\n@patch\ndef update_hand(self: GameLayout, hand: Hand):\n    suits = {\n        'diamonds': '♢',\n        'hearts': '♡',\n        'spades': '♤',\n        'clubs': '♧'\n    }\n\n    self.bottom_right = widgets.HBox(\n        [card_button_factory(f'{card.rank} {suits[card.suit]}')\n         for card in hand]\n    )\n    self.update_num_cards(52 - len(hand))\n\n    value = hand.value()  # type: ignore\n\n    if value > 21:\n        self.displayer.value = f\"Game over ({value})\"\n    elif value == 21:\n        self.displayer.value = \"You won!\"\n    else:\n        self.displayer.value = str(value)\n\n\nclass BlackJack:\n    def __init__(self):\n        self.view = GameLayout()\n        self.view.on_deck_click(self.on_deck_clicked)\n        self.view.on_reset_click(self.on_reset_clicked)\n        self._start()\n\n    def _start(self):\n        self.deck = FrenchDeck()\n        self.deck.shuffle()\n        self.hand = Hand()\n\n    def on_deck_clicked(self, event):\n        card = self.deck.draw()\n        self.hand.draw(card)\n        self.view.update_hand(self.hand)\n\n    def on_reset_clicked(self, event):\n        self._start()\n        self.view.update_hand(self.hand)\n\n    def __repr__(self):\n        display(self.view)\n        return \"\"\n\n\nblackjack = BlackJack()\nblackjack"
+  },
+  {
+    "objectID": "advanced_testing.html",
+    "href": "advanced_testing.html",
+    "title": "Advanced testing",
+    "section": "",
+    "text": "Check the next three cells. If the second cell is executed twice the assert will fail.\nThis is a naive example but it makes sure that the tests are isolated and independent. It’s a good practice followed by the majority of test frameworks and it’s suggested by guides and test standards.\nTo guarantee isolated tests in Jupyter notebooks we can use ipytest."
+  },
+  {
+    "objectID": "advanced_testing.html#using-ipytest",
+    "href": "advanced_testing.html#using-ipytest",
+    "title": "Advanced testing",
+    "section": "Using ipytest",
+    "text": "Using ipytest\nIpytest is a interface that allows the Pytest framework usage in notebooks\n\nFixtures\nFixtures are functions that provide a setup for tests to run on. They’re usually used to setup a precondition for tests and are also a powerful way to design complex tests and write reusable code for multiple tests.\nThis example was extracted from pytest docs\n\nclass Fruit:\n    def __init__(self, name):\n        self.name = name\n\n    def __eq__(self, other):\n        return self.name == other.name\n\n\n@pytest.fixture\ndef my_fruit():\n    return Fruit(\"apple\")\n\n\n@pytest.fixture\ndef fruit_basket(my_fruit):\n    return [Fruit(\"banana\"), my_fruit]\n\n\ndef test_my_fruit_in_basket(my_fruit, fruit_basket):\n    assert my_fruit in fruit_basket\n\n\n\nParametrizing tests\nIt’s a way of executing the same tests with multiple parameters. It’s really useful for writing cleaner tests.\nThis example was partially adapted from pytest docs.\n\ntime_diff_data = [\n    pytest.param(datetime(2001, 12, 12), datetime(2001, 12, 11), timedelta(1)),\n    pytest.param(datetime(2001, 12, 11), datetime(\n        2001, 12, 12), timedelta(-1)),\n]\n\n\n@pytest.mark.parametrize(\n    \"a,b,expected\",\n    time_diff_data\n)\ndef test_timedistance_v3(a, b, expected):\n    diff = a - b\n    assert diff == expected\n\n\n\nMore features\nThe features shown above are only examples, all pytests features are available in Jupyter notebooks (thanks to ipytest). Check their docs for further examples."
+  },
+  {
+    "objectID": "chat_gpt.html",
+    "href": "chat_gpt.html",
+    "title": "Chat GPT",
+    "section": "",
+    "text": "Download the “Ask AI” package\n\n! pip install git+https://github.com/radekosmulski/ask_ai.git\n\nYou will need to get/have a OpenAI key and add it to your environment with the variable name OPENAI_API_KEY. Run the following cell with your key:\n\nos.environ[\"OPENAI_API_KEY\"] = \"<OPENAI-KEY>\"\n\nAfter configuring your environment, load the magic cells of the package:\nAnd use %%ai_ask to start a conversation and %%ai_continue to continue a conversation\n\nCan you design a french deck class in python?"
+  },
+  {
+    "objectID": "hand.html",
+    "href": "hand.html",
+    "title": "Hand",
+    "section": "",
+    "text": "Code\nclass Hand:\n    def __init__(\n        # Max amount of cards it can be hold\n        self, max_cards: Optional[int] = None\n    ):\n        self._max_cards = max_cards\n        self.cards: List[Card] = []\n\n    def __getitem__(self, value: int):\n        return self.cards[value]\n\n    def __len__(self):\n        return len(self.cards)\n\n    def __iter__(self) -> Iterator[Card]:\n        return iter(self.cards)\n\n    def __repr__(self):\n        return \"\\n\".join(str(card) for card in self.cards)\nsource"
+  },
+  {
+    "objectID": "hand.html#usage-example",
+    "href": "hand.html#usage-example",
+    "title": "Hand",
+    "section": "Usage example",
+    "text": "Usage example\nThe hand can be used as a property for players in a deck game. Check the following hand definition that can draw and discard a card\n\nhand = Hand()\n\n\ncard = Card(rank=1, suit=\"spades\")\n\nhand.draw(card)  # type: ignore\nhand\n\nCard(rank=1, suit='spades')\n\n\nThe hand is iterable\n\n[card for card in hand]\n\n[Card(rank=1, suit='spades')]\n\n\n\nhand.discard()  # type: ignore\nlen(hand)\n\n0"
+  },
+  {
+    "objectID": "deck.html",
+    "href": "deck.html",
+    "title": "Deck",
+    "section": "",
+    "text": "The Fluent Python card representation was kept. The namedtuple usage allows a simple and Pythonic representation\n\nCard = collections.namedtuple(\"Card\", [\"rank\", \"suit\"])\n\n\ndiamon_7 = Card(\"7\", \"diamonds\")\ndiamon_7\n\nCard(rank='7', suit='diamonds')"
+  },
+  {
+    "objectID": "deck.html#french-deck",
+    "href": "deck.html#french-deck",
+    "title": "Deck",
+    "section": "French Deck",
+    "text": "French Deck\nFrench Deck is the most well popular deck in card games, it contains 52 cards splitted between 4 suits (spades, hearts, diamonds, clubs).\nThe FrenchDeck class uses dunder methods to define a pythonic interface.\nAll ranks of this French Deck implementation uses a integer number, this means that the A card corresponds to the number 1, and J, Q, K to 11, 12, 13, respectively. This will help applications like blackjack games to count the values in a player hand.\n\n\nCode\nclass FrenchDeck:\n    ranks = [n for n in range(1, 14)]\n    suits = \"spades diamonds clubs hearts\".split()\n\n    def __init__(self):\n        self.cards = [Card(rank, suit)\n                      for suit in self.suits for rank in self.ranks]\n\n    def __len__(self):\n        return len(self.cards)\n\n    def __getitem__(self, position):\n        return self.cards[position]\n\n    def __iter__(self) -> Iterator[Card]:\n        return iter(self.cards)\n\n    def __repr__(self):\n        return \"\\n\".join(str(card) for card in self.cards)\n\n\n\nsource\n\nFrenchDeck\n\n FrenchDeck ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\n\n\n\n\n\nImplementation detail\n\n\n\n\n\nThe __iter__ dunder method is not necessary because __getitem__ already makes the FrenchDeck iterable but [MyPy doesn’t recognize a class iterable when it implements only __getitem__]\n\n\n\n\ndeck = FrenchDeck()\n\nThe pythonic interface allows the usage of features from the Python built-in system like random.choice and slicing the deck\n\nrandom.choice(deck)\n\nCard(rank=1, suit='diamonds')\n\n\n\ndeck[:2]\n\n[Card(rank=1, suit='spades'), Card(rank=2, suit='spades')]\n\n\n\n\nSyntactic sugar\nDue to the Pythonic interface of French Deck the following function could be easily developed by its users, but to improve readability some syntactic sugar was added to the shuffle and draw cards operations\n\nsource\n\n\nFrenchDeck.shuffle\n\n FrenchDeck.shuffle ()\n\nShuffles all cards available\n\nsource\n\n\nFrenchDeck.draw\n\n FrenchDeck.draw ()\n\nRemoves a card from the top of the deck\n\ncard = deck.draw()  # type: ignore\ncard\n\nCard(rank=13, suit='hearts')\n\n\n\nsource\n\n\nFrenchDeck.draw_n\n\n FrenchDeck.draw_n (n_cards:int)\n\nRemoves n cards from the top of the deck\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\nn_cards\nint\n\n\n\nReturns\ntyping.List[main.Card]\nnumber of cards to draw\n\n\n\n\ncards = deck.draw_n(10)  # type: ignore\ncards\n\n[Card(rank=12, suit='hearts'),\n Card(rank=11, suit='hearts'),\n Card(rank=10, suit='hearts'),\n Card(rank=9, suit='hearts'),\n Card(rank=8, suit='hearts'),\n Card(rank=7, suit='hearts'),\n Card(rank=6, suit='hearts'),\n Card(rank=5, suit='hearts'),\n Card(rank=4, suit='hearts'),\n Card(rank=3, suit='hearts')]"
+  }
+]
